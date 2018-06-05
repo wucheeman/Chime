@@ -1,0 +1,29 @@
+{
+  "name": "chime",
+  "version": "1.0.0",
+  "description": "A text-broadcasting service",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wucheeman/Chime.git"
+  },
+  "author": "Matthew Buchanan, Neeni Nagaraj, Steve Yurchuck, Mark Hainline",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/wucheeman/Chime/issues"
+  },
+  "homepage": "https://github.com/wucheeman/Chime#readme",
+  "dependencies": {
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.10",
+    "sequelize-cli": "^4.0.0"
+  }
+}

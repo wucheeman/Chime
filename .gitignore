@@ -1,0 +1,12 @@
+# Build and Release Folders
+
+# Other files and folders
+
+node_modules/
+docs/
+test/
+
+# Executables
+
+
+
