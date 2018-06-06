@@ -1,3 +1,5 @@
+<img src="bell.svg" alt="bell icon" width="100px" align="left"/>
+<br>
 # Chime!
 
 ## What the project does
