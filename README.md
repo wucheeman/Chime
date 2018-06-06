@@ -1,6 +1,4 @@
-<img src="bell.svg" alt="image of bell" width="100px" align="left">
-<br>
-# Chime! 
+# Chime!
 
 ## What the project does
 Chime is a project that leverages the Twilio API to provide a text broadcasting service for companies and organizations to reach interested followers. It is a team project built for the February 2018 UNC Coding Boot Camp. Comments on the app and code will be added here when it is complete.
