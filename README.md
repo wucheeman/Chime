@@ -8,6 +8,19 @@ Chime is a project that leverages the Twilio API to provide a text broadcasting 
 ## How to get started with the app
 Eventually you will be able to use Chime online at Heroku or to download and install it locally, but it's not yet ready.
 
+To work locally with the databasem make sure that you have Node.js, MySQL and the dependencies listed in the package.json installed. Run this script in the root directory ($ is the command prompt):
+
+  $ bash ./setupDB.sh (Windows)
+
+OR
+
+  $ ./setupDB.sh (Mac/Linux)
+
+One of its steps starts Node's express server. When it has run, stop the server with 
+
+  $ CTRL-C
+
+
 ## Authors
 Chime is being built by the team listed below, along with each person's responsibilities:
 
