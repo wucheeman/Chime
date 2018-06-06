@@ -5,6 +5,7 @@
 node_modules/
 test/
 commit_tasks.txt
+mah_server.js
 
 # Executables
 
