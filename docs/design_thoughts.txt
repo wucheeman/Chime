@@ -1,0 +1,129 @@
+USER STORIES - MINIMUM VIABLE PRODUCT
+=====================================
+
+User/Follower
+-------------
+As a user, I want to sign up for the service so I can begin using the service to follow companies and organizations.
+
+As a user, I want to log on to the service.
+
+As a user, I want to select companies and organizations to follow.
+
+As a user, I want to see the companies and organizations that I have selected.
+
+As a user, I want to delete companies or organizations from my 'follow' list
+
+As a user, I want to log out from the service.
+
+
+User/Author
+-----------
+As an author, I want to sign up to start using the service.
+
+As an author, I want to log on to use the service.
+
+As an author, I want to write a texts that I will send.
+
+As an author, I want to send texts as soon as they are complete.
+
+As an author, I want to review texts that I have sent.
+
+As an author, I want to be able to see how many followers I have.
+
+As an author, I want to know how many texts I have sent.
+
+As a author, I want to log out from the service.
+
+
+STRETCH USER STORIES - AUTHENTICATION
+-------------------------------------
+As the service provider, I want to require people to use a password to access the service.
+
+As a user (all categories), I want to be able to enter my own password.
+
+As a user (all categories), I want to be able to change my own password.
+
+As an author (all categories), I want to be able to enter my own password.
+
+As an author (all categories), I want to be able to change my own password.
+
+
+STRETCH USER STORIES - AUTHORING CAPABILITIES
+------------------------------
+As an author, I want to save a draft of a text.
+
+As an author, I want to be able to edit drafts.
+
+As an author, I want to be able to delete text drafts.
+
+As an author, I want to be able to edit texts that I have sent and save them as new.
+
+As an author, I want to be able to see trends in how many followers I have.
+
+As an author, I want to schedule sending a text at a specified time
+
+As an author, I want to be able to assign a text to one or more system-defined categories.
+
+As a author, I want to be able to edit my user information.
+
+
+STRETCH USER STORIES - FOLLOWING CAPABILITIES
+---------------------------------------------
+As a user, I want to be able to edit my user information.
+
+As a user, I want to follow categories of text from companies and organizations, e.g., emergency announcements, new events, event reminders....
+
+STRETCH USER STORIES - ADIMINISTRATION CAPABILITIES
+---------------------------------------------------
+As a company or organization's administrator, I want to be able to add authors/authorize them to use the system to send texts.
+
+As an admin, I want to be able to edit author data.
+
+As an admin, I want to be able to delete an author/remove their authorization to use the system to sent texts.
+
+As an admin, I want to sign up to start using the service.
+
+As an admin, I want to log on to administer my company/organization's data.
+
+As an admin, I want to be able to create/edit/delete categories of information for my campany/organization's authors to use.
+
+
+DATA ENTITIES
+=============
+1. User/Follower
+2. Author
+3. Text
+4. Organization
+5. Admin (stretch)
+6. Category (stretch)
+
+
+SCHEMA PSEUDOCODE
+=================
+User/Follower
+  Name
+  Phone number
+  Organizations followed
+  Password (stretch)
+
+User/Author
+  Name
+  Organization representing
+  Password (stretch)
+
+Text
+  Status - draft/final/sent
+  Date sent
+  Body - content
+  Organization (foreign key)
+  Author (foreign key)
+  Category (foreign key)(stretch)
+
+Organization
+  Name
+  Distribution list
+  
+ User/Admin (stretch)
+  Name
+  Organization representing
+  Password

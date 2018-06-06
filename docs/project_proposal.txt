@@ -1,0 +1,14 @@
+Name: Chime - a community text broadcasting site
+
+Description: This website enables companies and community organizations to reach interested people via text. Companies/organizations sign up to send mass texts; individuals sign up to follow them.
+
+Data/Technology
+- Twilio for texting API
+- MySQL/Sequelize/Passport for database (authentication is a stretch goal)
+- Handlebars for front-end views
+
+Team members and responsibilities
+- Matt Buchanan - business logic and routing
+- Steve Yurchuck - Twilio API
+- Mark Hainline - MYSQL/Sequelize/Passport
+- Neeni - Front end
