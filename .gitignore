@@ -3,7 +3,6 @@
 # Other files and folders
 
 node_modules/
-docs/
 test/
 
 # Executables
