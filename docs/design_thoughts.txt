@@ -127,3 +127,6 @@ Organization
   Name
   Organization representing
   Password
+
+Category (stretch)
+  TBD
