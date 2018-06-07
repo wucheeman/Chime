@@ -15,6 +15,12 @@ As a user, I want to delete companies or organizations from my 'follow' list
 
 As a user, I want to log out from the service.
 
+Queries:
+  - add a user to user/follower table
+  - select all organizations
+  - select all organizations where user is following
+  - add an organization to followed status for a user
+  - delete an organization from followed status
 
 User/Author
 -----------
@@ -28,11 +34,16 @@ As an author, I want to send texts as soon as they are complete.
 
 As an author, I want to review texts that I have sent.
 
-As an author, I want to be able to see how many followers I have.
+As an author, I want to be able to see how many followers my company has.
 
 As an author, I want to know how many texts I have sent.
 
 As a author, I want to log out from the service.
+
+Queries:
+  - add a author to user/author table
+  - select all texts where status = sent and author = id
+  - select all followers from company distribution list
 
 
 STRETCH USER STORIES - AUTHENTICATION
@@ -121,9 +132,13 @@ Text
 
 Organization
   Name
-  Distribution list
-  Authors
+  Distribution list (foreign key)
+  Authors (foreign key)
   
+Distribution list
+  Organization
+  ...
+
  User/Admin (stretch)
   Name
   Organization representing
