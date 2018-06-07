@@ -15,10 +15,17 @@ module.exports = function(app) {
   });
 
   app.get('/user/:username', function(req, res) {
+    // db call to collect text logs
     res.render('user-home', {user: req.params.username});
   });
 
+  app.get('/user/:username/browse', function(req, res) {
+    // db call to display available companies to follow
+    res.render('user-browse');
+  });
+
   app.get('/org/:username', function(req, res) {
+    // db call to collect text logs
     res.render('org-home', {org: req.params.username});
   });
 }
