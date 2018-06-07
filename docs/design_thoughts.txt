@@ -122,6 +122,7 @@ Text
 Organization
   Name
   Distribution list
+  Authors
   
  User/Admin (stretch)
   Name
@@ -130,3 +131,12 @@ Organization
 
 Category (stretch)
   TBD
+
+DB API
+======
+
+getAll(table) - retrieves all rows in the table
+createOne(table, [{col: val} , ... {col: val}]) - creates a new row in the table
+updateOne(table, id, [{col: val} , ... {col: val}]) - updates the specified columns in the specified row in the table
+
+-- Others are TBD --
