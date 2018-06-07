@@ -8,6 +8,7 @@ commit_tasks.txt
 mah_server.js
 .env
 config/config.json
+bak/
 
 # Executables
 
