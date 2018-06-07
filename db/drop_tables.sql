@@ -1,0 +1,4 @@
+USE chimedb;
+DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS organizations;
+DROP TABLE IF EXISTS texts;
