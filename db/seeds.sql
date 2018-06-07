@@ -7,3 +7,8 @@ INSERT INTO texts (body, status, createdAt, updatedAt)
 VALUES ("This is the second text", "final", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ("This is the third text", "draft", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
+INSERT INTO authors(name, createdAt, updatedAt)
+VALUES("Charles Dickens", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+("Jane Austen", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+("Ernest Hemingway", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
