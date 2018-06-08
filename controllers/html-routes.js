@@ -9,11 +9,23 @@ module.exports = function(app) {
 
   app.post('/login', function(req, res) {
     // validate
-    var user = req.body.user;
-    res.status(200).send('Logged in');
+    var entity = req.body.entity;
+    var username = req.body.username;
+    res.status(200).send(`${entity}/${username}`);
   });
 
   app.get('/user/:username', function(req, res) {
-    res.render('home', {user: req.params.username});
+    // db call to collect text logs
+    res.render('user-home', {user: req.params.username});
+  });
+
+  app.get('/user/:username/browse', function(req, res) {
+    // db call to display available companies to follow
+    res.render('user-browse');
+  });
+
+  app.get('/org/:username', function(req, res) {
+    // db call to collect text logs
+    res.render('org-home', {org: req.params.username});
   });
 }
