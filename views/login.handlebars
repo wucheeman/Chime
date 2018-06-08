@@ -1,4 +1,4 @@
- <html lang="en">
+<html lang="en">
  <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,12 +6,22 @@
    <title>Login</title>
  </head>
  <body>
-   <form class= "user-login-button">
-    <label for="user">Enter a username.</label>
-    <input type="text" id="user">
-    <button class="btn btn-warning" id="login" type="submit">Login</button>
-  </form>
   
-  <script src="./js/login.js"></script>
+<form>
+  <input type="radio" name="entity" value="user"> I am a user. <br> 
+  <input type="radio" name="entity" value="org"> I am an organization. <br>
+</form>
+
+<form class="user-login-button">
+  <label for="username">Enter a username</label>
+  <input type="text" id="username">
+  <label for="password">Enter a password.</label>
+  <input type="password" id="password">
+  <button class="btn btn-warning" id="login" type="submit">Login</button>
+</form>
+
  </body>
  </html>
+
+ 
+<script src="./js/login.js"></script>
