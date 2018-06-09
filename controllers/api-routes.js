@@ -1,3 +1,4 @@
+var sendSMS = require('../twilio/send-sms.js');
 
 module.exports = function(app) {
   app.post('/api/:entity/:username', function(req, res) {
@@ -9,9 +10,12 @@ module.exports = function(app) {
   });
 
 
-  app.post('/api/:entity/:username/texts', function(req, res) {
+  app.post('/api/org/:username/texts', function(req, res) {
     // necessary for entity = org to store text logs
     // optional for entity = user if orgs listening to user texts
+    // if text validated,
+    //  call sendSMS here
+
 
   });
 
@@ -30,10 +34,7 @@ module.exports = function(app) {
 
   app.post('/api/user/:username/following/:org', function(req, res) {
     // add organization to follow
-  });
-
-  app.put('/api/user/:username/following/:org', function(req, res) {
-    // edit following settings such how long to see old messages
+    // get org id
   });
 
   app.delete('/api/user/:username/following/:org', function(req, res) {

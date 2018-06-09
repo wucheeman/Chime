@@ -9,6 +9,7 @@ mah_server.js
 .env
 config/config.json
 bak/
+ngrok
 
 # Executables
 
