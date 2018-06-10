@@ -1,26 +1,28 @@
 USE chimedb;
 
-INSERT INTO texts (body, status, date_sent, createdAt, updatedAt)
-VALUES("This is the first text", "sent", '2018-06-06', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO `Organizations` (`name`,`createdAt`,`updatedAt`) VALUES ('Bobs Bait and Web Services','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`createdAt`,`updatedAt`) VALUES ('Simchas for All','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`createdAt`,`updatedAt`) VALUES ('Intellitronics','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`createdAt`,`updatedAt`) VALUES ('Amazin Web Store','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`createdAt`,`updatedAt`) VALUES ('Debbies Data Services','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`createdAt`,`updatedAt`) VALUES ('Trader Petes Code Emporium','2018-06-10 13:22:58','2018-06-10 13:22:58');
 
-INSERT INTO texts (body, status, createdAt, updatedAt)
-VALUES ("This is the second text", "final", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("This is the third text", "draft", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO `Followers` (`name`,`phone_number`,`createdAt`,`updatedAt`) VALUES ('Amy Alligator','+11111111111','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Followers` (`name`,`phone_number`,`createdAt`,`updatedAt`) VALUES ('Bob Bear','+12222222222','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Followers` (`name`,`phone_number`,`createdAt`,`updatedAt`) VALUES ('Charles Coyote','+13333333333','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Followers` (`name`,`phone_number`,`createdAt`,`updatedAt`) VALUES ('Delores Dolphin','+14444444444','2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Followers` (`name`,`phone_number`,`createdAt`,`updatedAt`) VALUES ('Edward Eagle','+15555555555','2018-06-10 13:22:58','2018-06-10 13:22:58');
 
-INSERT INTO authors(name, createdAt, updatedAt)
-VALUES("Charles Dickens", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Jane Austen", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Ernest Hemingway", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is world','final','2018-06-10 13:22:58','2018-06-10 13:22:58',1);
+INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is apple','draft','2018-06-10 13:23:26','2018-06-10 13:23:26',2);
+INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is banana','draft','2018-06-10 13:23:56','2018-06-10 13:23:56',1);
+INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is cucumber','draft','2018-06-10 13:23:56','2018-06-10 13:23:56',4);
+INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is durian','draft','2018-06-10 13:23:56','2018-06-10 13:23:56',1);
 
-INSERT INTO organizations(name, createdAt, updatedAt)
-VALUES("Girl Scouts of the Triangle", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Bill's Bar and Web Services", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Trader Joe's", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-
-INSERT INTO followers (name, phone_number, createdAt, updatedAt)
-VALUES('Abigail Adams', +11111111111, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Bill Baxter", +12222222222, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Charles Carlton", +13333333333, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Deborah Douglas", +15555555555, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Eggbert Eddleston", +14444444444, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-("Frieda Fumber", +16666666666, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+-- TO RUN, do the following in bash ($ is the command prompt)
+--
+-- cd to the 'db' folder
+-- 
+--  $ mysql -u <user name> -p <your password> chimedb < seeds.sql
+--
+-- omit '-p <your password>' if you don't have one

@@ -1,4 +1,6 @@
 var sendSMS = require('../twilio/send-sms.js');
+// needed to connect to database
+var db = require("../models");
 
 module.exports = function(app) {
   app.post('/api/:entity/:username', function(req, res) {
@@ -53,5 +55,49 @@ module.exports = function(app) {
   app.delete('/api/:entity/:username/info', function(req, res) {
     // delete profile content
   });
+
+  // Start MAH additions
+  // can remove or merge those not needed or redundant
+
+  app.get("/api/organizations", function(req, res) {
+    // "include" sets the value to an array of the models to include in a left outer join
+    // In this case, just db.TextMsg
+    db.Organization.findAll({
+      include: [db.TextMsg]
+    }).then(function(dbOrganization) {
+      res.json(dbOrganization);
+    });
+  });
+
+  app.get("/api/organizations/:id", function(req, res) {
+    db.Organization.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.TextMsg]
+    }).then(function(dbOrganization) {
+      res.json(dbOrganization);
+    });
+  });
+
+  app.post("/api/organizations", function(req, res) {
+    // console.log(req.body);
+    db.Organization.create(req.body).then(function(dbOrganization) {
+      res.json(dbOrganization);
+    });
+  });
+
+  app.delete("/api/organizations/:id", function(req, res) {
+    console.log('deleting organization:' + req.params.id);
+    db.Organization.destroy({
+      where: {
+        id: req.params.id
+      },
+    }).then(function(dbOrganization) {
+      res.json(dbOrganization);
+    });
+  });
+
+  // end MAH additions
 
 }
