@@ -1,5 +1,6 @@
+
 module.exports = function(sequelize, DataTypes) {
-  var Text = sequelize.define("Text", {
+  var TextMsg = sequelize.define("TextMsg", {
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -11,17 +12,25 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM('draft', 'final', 'sent'),
       allowNull: false
     },
-    date_sent: {
-      type: DataTypes.DATE,
-      allowNull: true
-    }
-    // TODO: add Organization as foreign key
-    // TODO: add Author as foreign key
-    // stretch goal
-    // category: {
-    //   type: DataTypes.STRING,
-    //   defaultValue: "Personal"
+    // // stretch goal
+    // // category: {
+    // //   type: DataTypes.STRING,   <-- maybe an enum?
+    // //   defaultValue: "Announcement"
+    // // }
+    // // date_sent: {
+    // //   type: DataTypes.DATE,
+    // //   allowNull: true
     // }
   });
-  return Text;
+  TextMsg.associate = function(models) {
+    TextMsg.belongsTo(models.Organization, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+    // TODO: add Organization as foreign key?
+
+  return TextMsg;
 };
