@@ -3,7 +3,7 @@ $(document).ready(function() {
     var text = $('#message').val().trim();
     $.ajax({
       method: 'POST',
-      url: `/api/${location.href}/texts`,
+      url: `/api${location.pathname}/texts`,
       data: {message: text}
     }).then(function() {
       $('#message').val('');

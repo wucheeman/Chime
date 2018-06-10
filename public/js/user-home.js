@@ -3,7 +3,7 @@ $(document).ready(function() {
     var org = $(this).attr('data-name');
     $.ajax({
       method: 'DELETE',
-      url: `/api/${location.href}/following/${org}`,
+      url: `/api${location.pathname}/following/${org}`,
     }).then(function() {
       location.reload();
     });
