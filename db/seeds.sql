@@ -18,3 +18,11 @@ INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`
 INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is banana','draft','2018-06-10 13:23:56','2018-06-10 13:23:56',1);
 INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is cucumber','draft','2018-06-10 13:23:56','2018-06-10 13:23:56',4);
 INSERT INTO `TextMsgs` (`body`,`status`,`createdAt`,`updatedAt`,`OrganizationId`) VALUES ('test text word is durian','draft','2018-06-10 13:23:56','2018-06-10 13:23:56',1);
+
+-- TO RUN, do the following in bash ($ is the command prompt)
+--
+-- cd to the 'db' folder
+-- 
+--  $ mysql -u <user name> -p <your password> chimedb < seeds.sql
+--
+-- omit '-p <your password>' if you don't have one
