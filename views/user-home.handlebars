@@ -2,4 +2,10 @@
 <h2>Welcome {{user}}</h2>
 <a href="javascript:location.replace(location.href + '/browse')">Browse</a>
 <p>My messages</p>
+{{#each log}}
+<div>
+  <p>{{message}}</p>
+  <p>{{date}}</p>
+</div>
+{{/each}}
 
