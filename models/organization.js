@@ -1,14 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
   var Organization = sequelize.define("Organization", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    }
+    // Giving the Author model a name of type STRING
+    name: DataTypes.STRING
   });
-// TODO: add authors
-// TODO: add distribution list
+
+  Organization.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    Organization.hasMany(models.TextMsg, {
+      onDelete: "cascade"
+    });
+  };
+
   return Organization;
 };

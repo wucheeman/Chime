@@ -13,9 +13,14 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [12]
       }
-    }
+    },
   });
-// TODO: add organizations followed
-// TODO: add password (stretch)
+
+  // TODO: is this ok as-is?
+  // Follower.associate = function(models) {
+  //   // Associating Followers with Organizations
+    //   Follower.hasMany(models.Organization, {});
+  // };
+
   return Follower;
 };
