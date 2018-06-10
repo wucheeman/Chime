@@ -1,8 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var env = require('dotenv').load();
 var exphbs = require('express-handlebars');
-var models = require("./models");
+//var models = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -24,13 +23,14 @@ app.use(logger);
 */
 
 require("./controllers/routes.js")(app);
-
+/*
 //Sync Database
 models.sequelize.sync().then(function() {
   console.log('Nice! Database looks fine')
 }).catch(function(err) {
   console.log(err, "Something went wrong with the Database Update!")
 });
+*/
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);

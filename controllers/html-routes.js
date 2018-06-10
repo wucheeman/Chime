@@ -1,3 +1,25 @@
+// Temporary data
+const orgs = [{name: 'Festival'}, {name: 'Library'}, {name: 'Park'}, {name: 'Baseball Field'}];
+const subs = [{name: 'Festival'}, {name: 'Baseball'}];
+const logs = [
+  {
+    org: 'Festival',
+    message: 'World food fair',
+    date: '6/16/18'
+  },
+  {
+    org: 'Baseball',
+    message: 'Game tonight',
+    date: '6/10/18'
+  }
+];
+const companyLog = [
+  {
+    message: 'Thank you for following us',
+    date: '6/10/18'
+  }
+];
+
 module.exports = function(app) {
   app.get('/', function(req, res) {
     res.redirect('/login');
@@ -15,17 +37,25 @@ module.exports = function(app) {
   });
 
   app.get('/user/:username', function(req, res) {
-    // db call to collect text logs
-    res.render('user-home', {user: req.params.username});
+    var hbsObject = {
+      user: req.params.username,
+      sub: subs,
+      log: logs
+    }
+    res.render('user-home', hbsObject);
   });
 
   app.get('/user/:username/browse', function(req, res) {
     // db call to display available companies to follow
-    res.render('user-browse');
+    res.render('user-browse', {org: orgs});
   });
 
   app.get('/org/:username', function(req, res) {
     // db call to collect text logs
-    res.render('org-home', {org: req.params.username});
+    var hbsObject = {
+      org: req.params.username,
+      log: companyLog
+    }
+    res.render('org-home', hbsObject);
   });
 }
