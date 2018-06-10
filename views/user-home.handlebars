@@ -1,5 +1,28 @@
 <h1>Chime Homepage</h1>
 <h2>Welcome {{user}}</h2>
 <a href="javascript:location.replace(location.href + '/browse')">Browse</a>
+
+<div>
+<p>Subscriptions</p>
+{{#each sub}}
+  <div>
+    <p>{{name}}</p>
+    <button class="unsub" data-name="{{name}}">Subscribed</button>
+  </div>
+{{/each}}
+</div>
+
+<div>
 <p>My messages</p>
+{{#each log}}
+  <div>
+    <strong>{{org}}</strong>
+    <p>{{message}}</p>
+    <small>{{date}}</small>
+  </div>
+{{/each}}
+</div>
+
+<script src="/js/user-home.js"></script>
+
 
