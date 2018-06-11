@@ -59,6 +59,7 @@ module.exports = function(app) {
   // Start MAH additions
   // can remove or merge those not needed or redundant
 
+  // get route for all organizations
   app.get("/api/organizations", function(req, res) {
     // "include" sets the value to an array of the models to include in a left outer join
     // In this case, just db.TextMsg
@@ -69,6 +70,7 @@ module.exports = function(app) {
     });
   });
 
+  // get route for 
   app.get("/api/organizations/:id", function(req, res) {
     db.Organization.findOne({
       where: {
@@ -80,6 +82,7 @@ module.exports = function(app) {
     });
   });
 
+  // post route for adding an organization
   app.post("/api/organizations", function(req, res) {
     // console.log(req.body);
     db.Organization.create(req.body).then(function(dbOrganization) {
@@ -87,6 +90,7 @@ module.exports = function(app) {
     });
   });
 
+  // delete route for deleting an organization
   app.delete("/api/organizations/:id", function(req, res) {
     console.log('deleting organization:' + req.params.id);
     db.Organization.destroy({
@@ -97,6 +101,53 @@ module.exports = function(app) {
       res.json(dbOrganization);
     });
   });
+
+  // GET route for getting all followers
+  app.get("/api/followers", function(req, res) {
+    // TODO - update to follow Organization
+    // var query = {};
+    // if (req.query.follower_id) {
+    //   query.AuthorId = req.query.author_id;
+    // }
+    db.Follower.findAll({
+      // where: query,
+      // include: [db.Author]
+    }).then(function(dbFollower) {
+      res.json(dbFollower);
+    });
+  });
+
+  // Get route for retrieving a single follower
+  app.get("/api/followers/:id", function(req, res) {
+    db.Follower.findOne({
+      where: {
+        id: req.params.id
+      },
+      // TODO: update to Organization
+      // include: [db.Author]
+    }).then(function(dbFollower) {
+      res.json(dbFollower);
+    });
+  });
+
+    // POST route for a new follower
+    app.post("/api/followers", function(req, res) {
+      db.Follower.create(req.body).then(function(dbFollower) {
+        res.json(dbFollower);
+      });
+    });
+  
+    // DELETE route for a follower
+    app.delete("/api/followers/:id", function(req, res) {
+      db.Follower.destroy({
+        where: {
+          id: req.params.id
+        },
+      }).then(function(dbFollower) {
+        res.json(dbFollower);
+      });
+    });
+  
 
   // end MAH additions
 
