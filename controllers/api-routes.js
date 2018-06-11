@@ -136,7 +136,21 @@ module.exports = function(app) {
         res.json(dbFollower);
       });
     });
-  
+
+  // PUT route for updating follower
+  app.put("/api/followers", function(req, res) {
+    db.Follower.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbFollower) {
+        res.json(dbFollower);
+      });
+  });
+
+
     // DELETE route for a follower
     app.delete("/api/followers/:id", function(req, res) {
       db.Follower.destroy({
@@ -162,7 +176,7 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a single post
+  // Get route for retrieving a single text
   app.get("/api/texts/:id", function(req, res) {
     db.TextMsg.findOne({
       where: {
@@ -182,7 +196,6 @@ module.exports = function(app) {
     });
   });
 
-
     // DELETE route for a text
     app.delete("/api/texts/:id", function(req, res) {
       db.TextMsg.destroy({
@@ -194,6 +207,8 @@ module.exports = function(app) {
       });
     });
 
+
+    
   // end MAH additions
 
 }

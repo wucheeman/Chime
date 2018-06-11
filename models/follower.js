@@ -14,6 +14,11 @@ module.exports = function(sequelize, DataTypes) {
         len: [12]
       }
     },
+    // TODO: fix when junction tables are better understood!
+    followed_orgs: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   });
 
   // TODO: is this ok as-is?
