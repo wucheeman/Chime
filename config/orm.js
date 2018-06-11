@@ -25,6 +25,11 @@ var orm = {
   deleteRow: function(table, col, val, cb) {
     var qv = `DELETE FROM ${table} WHERE ${col}=${val}`;
     query(qv, cb);
+  },
+  leftJoinAndSelectAll: function(table1, table2, col1, col2, cb) {
+    var qv = `SELECT * FROM ${table1}`;
+    qv += `LEFT JOIN ${table2} ON ${table1}.${col1} = ${table2}.${col2}`;
+    query(qv, cb);
   }
 }
 
