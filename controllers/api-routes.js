@@ -70,7 +70,7 @@ module.exports = function(app) {
     });
   });
 
-  // get route for 
+  // get route for organization and all its texts
   app.get("/api/organizations/:id", function(req, res) {
     db.Organization.findOne({
       where: {
@@ -148,6 +148,51 @@ module.exports = function(app) {
       });
     });
   
+  // GET route for getting all of the texts
+  app.get("/api/texts", function(req, res) {
+    var query = {};
+    // if (req.query.author_id) {
+    //   query.AuthorId = req.query.author_id;
+    // }
+    db.TextMsg.findAll({
+      where: query,
+      include: [db.Organization]
+    }).then(function(dbTextMsg) {
+      res.json(dbTextMsg);
+    });
+  });
+
+  // Get route for retrieving a single post
+  app.get("/api/texts/:id", function(req, res) {
+    db.TextMsg.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Organization]
+    }).then(function(dbTextMsg) {
+      res.json(dbTextMsg);
+    });
+  });
+
+
+  // POST route for saving a new text
+  app.post("/api/texts", function(req, res) {
+    db.TextMsg.create(req.body).then(function(dbTextMsg) {
+      res.json(dbTextMsg);
+    });
+  });
+
+
+    // DELETE route for a text
+    app.delete("/api/texts/:id", function(req, res) {
+      db.TextMsg.destroy({
+        where: {
+          id: req.params.id
+        },
+      }).then(function(dbTextMsg) {
+        res.json(dbTextMsg);
+      });
+    });
 
   // end MAH additions
 
