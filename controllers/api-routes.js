@@ -90,6 +90,19 @@ module.exports = function(app) {
     });
   });
 
+  // PUT route for updating an organization
+  app.put("/api/organizations", function(req, res) {
+    db.Organization.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbOrganization) {
+        res.json(dbOrganization);
+      });
+  });
+
   // delete route for deleting an organization
   app.delete("/api/organizations/:id", function(req, res) {
     console.log('deleting organization:' + req.params.id);

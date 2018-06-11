@@ -7,6 +7,11 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    // TODO: fix when junction tables are better understood!
+    followers: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   });
 
   Organization.associate = function(models) {
