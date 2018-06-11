@@ -22,8 +22,8 @@ var orm = {
     qv += ` SET ${col} = ${val}`;
     query(qv, cb);
   },
-  deleteRow: function(table, id, cb) {
-    var qv = `DELETE FROM ${table} WHERE id=${id}`;
+  deleteRow: function(table, col, val, cb) {
+    var qv = `DELETE FROM ${table} WHERE ${col}=${val}`;
     query(qv, cb);
   }
 }
