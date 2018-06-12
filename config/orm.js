@@ -34,19 +34,20 @@ var orm = {
     var qv = `DELETE FROM ${table} WHERE ${col}=${val};`;
     query(qv, cb);
   },
-  leftJoinSelect: function(colArr, table1, table2, condition, cb) {
+  leftJoinSelect: function(colArr, table1, table2, where, condition, cb) {
     var qv = `SELECT `;
     qv += arrIntoQuery(colArr);
     qv += ` FROM ${table1}`;
+    qv += ` WHERE ${where}`;
     qv += ` LEFT JOIN ${table2} ON ${condition};`;
     query(qv, cb);  
   },
   leftJoinChained: function(colArr, table1, table2, condition1, condition2, cb) {
     var qv = `SELECT `;
     qv += arrIntoQuery(colArr);
-    qv += `FROM ${table1}`;
-    qv += `LEFT JOIN ${table2} ON ${condition1}`;
-    qv += ` AND ${condition2};`;
+    qv += ` FROM ${table1}`;
+    qv += ` LEFT JOIN ${table2} ON ${condition1}`;
+    qv += ` AND ${condition2}`;
     query(qv, cb);
   }
 }

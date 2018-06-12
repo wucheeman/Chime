@@ -1,14 +1,14 @@
 var sendSMS = require('../twilio/send-sms.js');
 // needed to connect to database
 var model = require('../models/model.js');
-var db = require("../models");
+//var db = require("../models");
 
 module.exports = function(app) {
-  app.post('/api/:entity/:username', function(req, res) {
+  app.post('/api/:entity/:username/login', function(req, res) {
     // create account
   });
 
-  app.delete('/api/:entity/:username', function(req, res) {
+  app.delete('/api/:entity/:username/login', function(req, res) {
     // delete account
   });
 
