@@ -3,24 +3,24 @@
 <a href="javascript:location.replace(location.href + '/browse')">Browse</a>
 
 <div>
-<p>Subscriptions</p>
-{{#each sub}}
+  <p>Subscriptions</p>
+  {{#each sub}}
   <div>
     <p>{{name}}</p>
     <button class="unsub" data-name="{{name}}">Subscribed</button>
   </div>
-{{/each}}
+  {{/each}}
 </div>
 
 <div>
-<p>My messages</p>
-{{#each log}}
+  <p>My messages</p>
+  {{#each log}}
   <div>
     <strong>{{org}}</strong>
     <p>{{message}}</p>
     <small>{{date}}</small>
   </div>
-{{/each}}
+  {{/each}}
 </div>
 
 <script src="/js/user-home.js"></script>
