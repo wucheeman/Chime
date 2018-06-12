@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/login_style.css" type="text/css">
+  <title>Login Page</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="layouts/main.handlebars" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        User or Organization?
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="views/user-home.handlebars">I am a user.</a>
+        <a class="dropdown-item" href="views/org-home.handlebars">I am an organization.</a>
+      </div>
+    </div>
+
+
+    {{!-- <form>
+      <input type="radio" name="entity" value="user"> 
+      <br>
+      <input type="radio" name="entity" value="org"> 
+      <br>
+    </form> --}}
+
+    <div class="panel-body">
+      <form class="user-login">
+        <label for="username">Enter a username</label>
+        <input type="text" id="username">
+        <label for="password">Enter a password.</label>
+        <input type="password" id="password">
+        <button class="btn btn-warning" id="login" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="./js/login.js"></script>
+</body>
+
+</html>
