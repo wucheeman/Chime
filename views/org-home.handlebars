@@ -2,20 +2,20 @@
 <h2>Welcome {{org}}</h2>
 <p>Send an SMS</p>
 <div>
-<form>
-  <label for="message">Compose Text Message</label>
-  <input type="text" id="message">
-  <button id="send">Send</button>
-</form>
+  <form>
+    <label for="message">Compose Text Message</label>
+    <input type="text" id="message">
+    <button id="send">Send</button>
+  </form>
 </div>
 <div>
-<p>Sent messages</p>
-{{#each log}}
-<div>
-  <p>{{message}}</p>
-  <p>{{date}}</p>
-</div>
-{{/each}}
+  <p>Sent messages</p>
+  {{#each log}}
+  <div>
+    <p>{{message}}</p>
+    <p>{{date}}</p>
+  </div>
+  {{/each}}
 </div>
 
 <script src="/js/org-home.js"></script>
