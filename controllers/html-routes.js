@@ -1,3 +1,4 @@
+var model = require('../models/model.js');
 // Temporary data
 const orgs = [{name: 'Festival'}, {name: 'Library'}, {name: 'Park'}, {name: 'Baseball Field'}];
 const subs = [{name: 'Festival'}, {name: 'Baseball'}];
@@ -37,12 +38,14 @@ module.exports = function(app) {
   });
 
   app.get('/user/:username', function(req, res) {
-    var hbsObject = {
-      user: req.params.username,
-      sub: subs,
-      log: logs
-    }
-    res.render('user-home', hbsObject);
+    model.getSubscriptionMessages(req.params.username, data => {
+      var hbsObject = {
+        user: req.params.username,
+        sub: data.organization,
+        log: data.message
+      };
+      res.render('user-home', hbsObject);
+    });
   });
 
   app.get('/user/:username/browse', function(req, res) {
@@ -52,10 +55,12 @@ module.exports = function(app) {
 
   app.get('/org/:username', function(req, res) {
     // db call to collect text logs
-    var hbsObject = {
-      org: req.params.username,
-      log: companyLog
-    }
-    res.render('org-home', hbsObject);
+    model.getAllTextsByOrg(req.params.username, data => {
+      var hbsObject = {
+        org: req.params.username,
+        log: data.message
+      };
+      res.render('org-home', hbsObject);
+    });  
   });
 }

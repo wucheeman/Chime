@@ -2,7 +2,14 @@ var connection = require('./connection.js');
 
 var orm = {
   selectAll: function(table, cb) {
-    qv = `SELECT * FROM ${table}`;
+    qv = `SELECT * FROM ${table};`;
+    query(qv, cb);
+  },
+  findWhere: function(table, colArr, col, val, cb) {
+    qv = `SELECT `;
+    qv += arrIntoQuery(colArr);
+    qv += ` FROM ${table}`;
+    qv += ` WHERE ${col} = ${val};`
     query(qv, cb);
   },
   findAll: function(table, col, val, cb) {
@@ -15,20 +22,31 @@ var orm = {
     qv += arrIntoQuery(colArr);
     qv += `) VALUES (`;
     qv += arrIntoQuery(valArr);
+    qv += ';';
     query(qv, cb);
   },
   updateVal: function(table, id, col, val, cb) {
     var qv = `UPDATE ${table} WHERE id=${id}`;
-    qv += ` SET ${col} = ${val}`;
+    qv += ` SET ${col} = ${val};`;
     query(qv, cb);
   },
   deleteRow: function(table, col, val, cb) {
-    var qv = `DELETE FROM ${table} WHERE ${col}=${val}`;
+    var qv = `DELETE FROM ${table} WHERE ${col}=${val};`;
     query(qv, cb);
   },
-  leftJoinAndSelectAll: function(table1, table2, col1, col2, cb) {
-    var qv = `SELECT * FROM ${table1}`;
-    qv += `LEFT JOIN ${table2} ON ${table1}.${col1} = ${table2}.${col2}`;
+  leftJoinSelect: function(colArr, table1, table2, condition, cb) {
+    var qv = `SELECT `;
+    qv += arrIntoQuery(colArr);
+    qv += ` FROM ${table1}`;
+    qv += ` LEFT JOIN ${table2} ON ${condition};`;
+    query(qv, cb);  
+  },
+  leftJoinChained: function(colArr, table1, table2, condition1, condition2, cb) {
+    var qv = `SELECT `;
+    qv += arrIntoQuery(colArr);
+    qv += `FROM ${table1}`;
+    qv += `LEFT JOIN ${table2} ON ${condition1}`;
+    qv += ` AND ${condition2};`;
     query(qv, cb);
   }
 }

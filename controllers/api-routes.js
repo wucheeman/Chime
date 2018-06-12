@@ -1,5 +1,6 @@
 var sendSMS = require('../twilio/send-sms.js');
 // needed to connect to database
+var model = require('../models/model.js');
 var db = require("../models");
 
 module.exports = function(app) {
@@ -16,6 +17,19 @@ module.exports = function(app) {
     // necessary for entity = org to store text logs
     // if text validated,
     //  call sendSMS here
+    var myphone = '';
+    model.getOrgInfo(req.params.username, number => {
+      myphone = number.phone;
+    });
+    model.addTextByOrg(req.params.username, req.body, data => {
+      console.log(data);
+      model.getSubscribers(req.params.username, contacts => {
+        contacts.forEach(function(contact) {
+          sendSMS(req.body, myphone, contact.phone);
+        });
+
+      });
+    })
 
 
   });
