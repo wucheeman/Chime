@@ -1,26 +1,30 @@
+<div class="container">
 <h1>Chime Homepage</h1>
 <h2>Welcome {{user}}</h2>
 <a href="javascript:location.replace(location.href + '/browse')">Browse</a>
 
 <div>
-  <p>Subscriptions</p>
-  {{#each sub}}
+<p>Subscriptions</p>
+{{#each subs}}
   <div>
-    <p>{{name}}</p>
-    <button class="unsub" data-name="{{name}}">Subscribed</button>
+    <p>{{sub}}</p>
+    <button class="subscribe" data-name="{{sub}}" data-sub="true">Subscribed</button>
   </div>
   {{/each}}
 </div>
 
 <div>
-  <p>My messages</p>
-  {{#each log}}
+<p>My messages</p>
+  {{#each messages}}
   <div>
-    <strong>{{org}}</strong>
+    <strong>{{sub}}</strong>
+    <br>
     <p>{{message}}</p>
-    <small>{{date}}</small>
+    <!--<small>{{date}}</small>-->
   </div>
   {{/each}}
+</div>
+
 </div>
 
 <script src="/js/user-home.js"></script>
