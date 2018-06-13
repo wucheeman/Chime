@@ -2,22 +2,37 @@ var orm = require('../config/orm.js');
 
 var model = {
   addTextByOrg: function(organization, message, cb) {
-    orm.insertRow('organization_texts', ['organization', 'message'], [organization, message], function(res) {
+    orm.insertRow('organization_texts', ['organization', 'message'], [`"${organization}"`, `"${message}"`], function(res) {
       cb(res);
     });
   },
   getAllTextsByOrg: function(organization, cb) {
-    orm.findAll('organization_texts', 'organization', organization, function(res) {
+    orm.findWhere('organization_texts', ['message'], 'organization', organization, function(res) {
       cb(res);
     }); 
   },
   getSubscribers: function(organization, cb) {
-    orm.leftJoinChained(['follower', 'phone'], 'organizations_followed', 'followers', `organization=${organization}`, `organizations_followed.follower = followers.username`, function(res) {
+    orm.leftJoinSelect(['follower', 'phone'], 'organizations_followed', 'followers', `organizations_followed.follower = followers.username`,`organization = "${organization}"`, function(res) {
       cb(res);
     });
   },
   getSubscriptionMessages: function(follower, cb) {
     orm.leftJoinSelect(['follower', 'organizations_followed.organization', 'message'], 'organizations_followed', 'organization_texts',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, function(res) {
+      cb(res);
+    });
+  },
+  subscribe: function(organization, follower, cb) {
+    orm.insertRow('organizations_followed', ['organization', 'follower'], [`"${organization}"`, `"${follower}"`], function(res) {
+      cb(res);
+    });
+  },
+  unsubscribe: function(organization, follower, cb) {
+    orm.deleteRow('organizations_followed', 'organization', `"${organization}"`, 'follower', `"${follower}"`, function(res) {
+      cb(res);
+    });
+  },
+  displayOrganizations: function(cb) {
+    orm.selectAll('organizations', ['username'], function(res) {
       cb(res);
     });
   },

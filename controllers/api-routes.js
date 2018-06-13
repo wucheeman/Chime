@@ -18,20 +18,20 @@ module.exports = function(app) {
     // if text validated,
     //  call sendSMS here
     var myphone = '';
-    model.getOrgInfo(req.params.username, number => {
+    model.getOrgInfo(req.params.username, ['phone'], number => {
       myphone = number.phone;
     });
-    model.addTextByOrg(req.params.username, req.body, data => {
+    model.addTextByOrg(req.params.username, req.body.message, data => {
       console.log(data);
       model.getSubscribers(req.params.username, contacts => {
         contacts.forEach(function(contact) {
-          sendSMS(req.body, myphone, contact.phone);
+          //sendSMS(req.body, myphone, contact.phone);
         });
+        console.log(contacts);
 
       });
-    })
-
-
+      res.status(200).json(data);
+    });
   });
 
   app.put('/api/org/:username/texts/:id', function(req, res) {
@@ -50,11 +50,19 @@ module.exports = function(app) {
   app.post('/api/user/:username/following', function(req, res) {
     // add organization to follow
     // get org id
+    model.subscribe(req.body.name,req.params.username, data => {
+      console.log(data);
+      res.status(200).json(data);
+    });
   });
 
   app.delete('/api/user/:username/following/:org', function(req, res) {
     // unsubscribe
     // very important
+    model.unsubscribe(req.params.org, req.params.username, data => {
+      console.log(data);
+      res.status(200).json(data);
+    });
   });
 
 

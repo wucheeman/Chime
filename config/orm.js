@@ -1,20 +1,22 @@
 var connection = require('./connection.js');
 
 var orm = {
-  selectAll: function(table, cb) {
-    qv = `SELECT * FROM ${table};`;
+  selectAll: function(table, colArr, cb) {
+    qv = `SELECT `;
+    qv += arrIntoQuery(colArr);
+    qv += ` FROM ${table};`;
     query(qv, cb);
   },
   findWhere: function(table, colArr, col, val, cb) {
     qv = `SELECT `;
     qv += arrIntoQuery(colArr);
     qv += ` FROM ${table}`;
-    qv += ` WHERE ${col} = ${val};`
+    qv += ` WHERE ${col} = "${val}";`
     query(qv, cb);
   },
   findAll: function(table, col, val, cb) {
     qv = `SELECT * FROM ${table}`;
-    qv += ` WHERE ${val} = ${col};`;
+    qv += ` WHERE ${val} = "${col}";`;
     query(qv, cb);
   },
   insertRow: function(table, colArr, valArr, cb) {
@@ -22,7 +24,7 @@ var orm = {
     qv += arrIntoQuery(colArr);
     qv += `) VALUES (`;
     qv += arrIntoQuery(valArr);
-    qv += ';';
+    qv += ');';
     query(qv, cb);
   },
   updateVal: function(table, id, col, val, cb) {
@@ -30,8 +32,8 @@ var orm = {
     qv += ` SET ${col} = ${val};`;
     query(qv, cb);
   },
-  deleteRow: function(table, col, val, cb) {
-    var qv = `DELETE FROM ${table} WHERE ${col}=${val};`;
+  deleteRow: function(table, col1, val1, col2, val2, cb) {
+    var qv = `DELETE FROM ${table} WHERE ${col1} = ${val1} AND ${col2} = ${val2};`;
     query(qv, cb);
   },
   leftJoinSelect: function(colArr, table1, table2, condition, where, cb) {

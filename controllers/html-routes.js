@@ -43,26 +43,33 @@ module.exports = function(app) {
       data.forEach(point => {
         hbsObject.messages.push({
         sub: point.organization,
-        log: point.message
+        message: point.message || ''
         });
       });
       res.render('user-home', hbsObject);
       console.log(data);
+      console.log(hbsObject);
     });
   });
 
   app.get('/user/:username/browse', function(req, res) {
     // db call to display available companies to follow
-    res.render('user-browse', {org: orgs});
+    model.displayOrganizations(data => {
+      var hbsObject = {orgs: []};
+      data.forEach(point => {
+        hbsObject.orgs.push({username: point.username});
+      });
+      res.render('user-browse', hbsObject);
+    })
   });
 
   app.get('/org/:username', function(req, res) {
     // db call to collect text logs
     model.getAllTextsByOrg(req.params.username, data => {
-      var hbsObject = {
-        org: req.params.username,
-        log: data.message
-      };
+      var hbsObject = {org: req.params.username, messages: []}
+      data.forEach(point => {
+        hbsObject.messages.push({message: point.message});
+      });
       res.render('org-home', hbsObject);
     });  
   });
