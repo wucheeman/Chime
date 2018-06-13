@@ -17,7 +17,7 @@ var model = {
     });
   },
   getSubscriptionMessages: function(follower, cb) {
-    orm.leftJoinChained(['follower', 'organization', 'message'], 'organization_texts', 'organizations_followed',  'organization_followed.organization = organizations_texts.organization', `follower = ${follower}`, function(res) {
+    orm.leftJoinSelect(['follower', 'organizations_followed.organization', 'message'], 'organizations_followed', 'organization_texts',  'organizations_texts.organization = organization_followed.organization', `follower = ${follower}`, function(res) {
       cb(res);
     });
   },
