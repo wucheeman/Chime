@@ -34,17 +34,12 @@ module.exports = function(app) {
     });
   });
 
-  app.put('/api/org/:username/texts/:id', function(req, res) {
-    // org wants to edit message for logs
+  // app.delete('/api/org/:username/texts/:id', function(req, res) {
+  //   // org wants to delete mistake message
+  //   // org wants to get rid of old messages
+  //   // needs timestamp
 
-  });
-
-  app.delete('/api/org/:username/texts/:id', function(req, res) {
-    // org wants to delete mistake message
-    // org wants to get rid of old messages
-    // needs timestamp
-
-  });
+  // });
 
 
   app.post('/api/user/:username/following', function(req, res) {
@@ -66,18 +61,18 @@ module.exports = function(app) {
   });
 
 
-  app.post('/api/:entity/:username/info', function(req, res) {
-    // add new info such as image link
-  });
+  // app.post('/api/:entity/:username/info', function(req, res) {
+  //   // add new info such as image link
+  // });
 
-  app.put('/api/:entity/:username/info', function(req, res) {
-    // edit a bio
-  });
+  // app.put('/api/:entity/:username/info', function(req, res) {
+  //   // edit a bio
+  // });
 
-  app.delete('/api/:entity/:username/info', function(req, res) {
-    // delete profile content
-  });
-
+  // app.delete('/api/:entity/:username/info', function(req, res) {
+  //   // delete profile content
+  // });
+/*
   // Start MAH additions
   // can remove or merge those not needed or redundant
 
@@ -110,6 +105,19 @@ module.exports = function(app) {
     db.Organization.create(req.body).then(function(dbOrganization) {
       res.json(dbOrganization);
     });
+  });
+
+  // PUT route for updating an organization
+  app.put("/api/organizations", function(req, res) {
+    db.Organization.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbOrganization) {
+        res.json(dbOrganization);
+      });
   });
 
   // delete route for deleting an organization
@@ -158,7 +166,21 @@ module.exports = function(app) {
         res.json(dbFollower);
       });
     });
-  
+
+  // PUT route for updating follower
+  app.put("/api/followers", function(req, res) {
+    db.Follower.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbFollower) {
+        res.json(dbFollower);
+      });
+  });
+
+
     // DELETE route for a follower
     app.delete("/api/followers/:id", function(req, res) {
       db.Follower.destroy({
@@ -184,7 +206,7 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a single post
+  // Get route for retrieving a single text
   app.get("/api/texts/:id", function(req, res) {
     db.TextMsg.findOne({
       where: {
@@ -204,7 +226,6 @@ module.exports = function(app) {
     });
   });
 
-
     // DELETE route for a text
     app.delete("/api/texts/:id", function(req, res) {
       db.TextMsg.destroy({
@@ -216,6 +237,19 @@ module.exports = function(app) {
       });
     });
 
+    app.get("/api/test", function(req, res) {
+      console.log('got here');
+      res.send('GET request to api/test');
+    });
+
+    app.delete("/api/test/", function (req, res) {
+      // Sending parameters causes this function to blow up
+      //const id = req.params.id;
+      //console.log(req);
+      res.send('delete request gets here');
+    });
+    
   // end MAH additions
+  */
 
 }

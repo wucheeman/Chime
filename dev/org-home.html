@@ -1,4 +1,3 @@
-<div class="container">
 <h1>Chime Homepage</h1>
 <h2>Welcome {{org}}</h2>
 <p>Send an SMS</p>
@@ -10,13 +9,13 @@
   </form>
 </div>
 <div>
-<p>Sent messages</p>
-{{#each messages}}
-<div>
-  <p>{{message}}</p>
-  <!--<p>{{date}}</p>-->
+  <p>Sent messages</p>
+  {{#each log}}
+  <div>
+    <p>{{message}}</p>
+    <p>{{date}}</p>
+  </div>
+  {{/each}}
 </div>
-{{/each}}
-</div>
-</div>
+
 <script src="/js/org-home.js"></script>
