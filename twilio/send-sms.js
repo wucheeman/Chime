@@ -15,12 +15,8 @@ module.exports = function(body, from, to) {
   client.messages
     .create({
         body: body,
-        // Matt's phone number
         from: from,
-        // Steve's phone number
-        //to: "+16784672335" 
         to: to
-        //replace to number for number to send to
       })
     .then(message => console.log(message.sid))
     .done();
