@@ -218,9 +218,38 @@ module.exports = function(app) {
     });
   });
 
-
   // POST route for saving a new text
+  // NOT VERY DRY!
   app.post("/api/texts", function(req, res) {
+    const body = req.body.body;
+    let fromNumber = '';
+    followerArray = [];
+    let followerString = '';
+    // get organization ID from post
+    orgID = req.body.OrganizationId;
+
+    // use ID to get organization's record from DB
+    db.Organization.findOne({
+      where: {
+        id: orgID
+      },
+      include: [db.TextMsg]
+    }).then(function(dbOrganization) {
+      fromNumber = dbOrganization.dataValues.phone_number;
+      followerString = dbOrganization.dataValues.followers;
+      followerArray = followerString.split(',');
+      
+      followerArray.forEach(followerID => {
+        db.Follower.findOne({
+          where: {
+            id: followerID
+          },
+        }).then(function(dbFollower) {
+            let toNumber = dbFollower.dataValues.phone_number;
+            sendSMS(body, fromNumber, toNumber);
+        });
+      })
+    });
     db.TextMsg.create(req.body).then(function(dbTextMsg) {
       res.json(dbTextMsg);
     });
