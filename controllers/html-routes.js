@@ -39,12 +39,15 @@ module.exports = function(app) {
 
   app.get('/user/:username', function(req, res) {
     model.getSubscriptionMessages(req.params.username, data => {
-      var hbsObject = {
-        user: req.params.username,
-        sub: data.organization,
-        log: data.message
-      };
+      var hbsObject = {user: req.params.username, messages: []};
+      data.forEach(point => {
+        hbsObject.messages.push({
+        sub: point.organization,
+        log: point.message
+        });
+      });
       res.render('user-home', hbsObject);
+      console.log(data);
     });
   });
 

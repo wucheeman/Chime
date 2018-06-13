@@ -47,7 +47,7 @@ var orm = {
     qv += arrIntoQuery(colArr);
     qv += ` FROM ${table1}`;
     qv += ` LEFT JOIN ${table2} ON ${condition1}`;
-    qv += ` AND ${condition2}`;
+    //qv += ` WHERE = (SELECT * WHERE ${condition2});`;
     query(qv, cb);
   }
 }
@@ -64,7 +64,7 @@ function arrIntoQuery(arr) {
   for (var i = 0; i < arr.length; i++) {
     queryVal += `${arr[i]}`;
     if (i < arr.length - 1) {
-      queryVal += `,`;
+      queryVal += `, `;
     }
   }
   return queryVal;

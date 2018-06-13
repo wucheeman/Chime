@@ -17,3 +17,6 @@ INSERT INTO organizations_followed
 ('susan', 'park'),
 ('rick', 'gym'),
 ('rick', 'lab');
+
+INSERT INTO organization_texts (organization, message)
+VALUES ('lab', 'pam is on the loose');

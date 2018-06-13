@@ -4,20 +4,21 @@
 
 <div>
 <p>Subscriptions</p>
-{{#each sub}}
+{{#each messages}}
   <div>
-    <p>{{name}}</p>
-    <button class="unsub" data-name="{{name}}">Subscribed</button>
+    <p>{{sub}}</p>
+    <button class="unsub" data-name="{{sub}}">Subscribed</button>
   </div>
 {{/each}}
 </div>
 
 <div>
 <p>My messages</p>
-{{#each log}}
+{{#each messages}}
   <div>
-    <strong>{{org}}</strong>
-    <p>{{message}}</p>
+    <strong>{{sub}}</strong>
+    <br>
+    <p>{{log}}</p>
     <small>{{date}}</small>
   </div>
 {{/each}}
