@@ -1,4 +1,4 @@
-<img src="bell.svg" alt="bell icon" width="100px" align="left"/>
+<img src="public/images/bell.svg" alt="bell icon" width="100px" align="left"/>
 <br>
 # Chime!
 

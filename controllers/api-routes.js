@@ -1,27 +1,38 @@
 var sendSMS = require('../twilio/send-sms.js');
 // needed to connect to database
-var db = require("../models");
+var model = require('../models/model.js');
+//var db = require("../models");
 
 module.exports = function(app) {
-  // app.post('/api/:entity/:username', function(req, res) {
-  //   // create account
-  // });
+  app.post('/api/:entity/:username/login', function(req, res) {
+    // create account
+  });
 
-  // app.delete('/api/:entity/:username', function(req, res) {
-  //   // delete account
-  // });
+  app.delete('/api/:entity/:username/login', function(req, res) {
+    // delete account
+  });
 
 
-  // app.post('/api/org/:username/texts', function(req, res) {
-  //   // necessary for entity = org to store text logs
-  //   // if text validated,
-  //   //  call sendSMS here
-  // });
+  app.post('/api/org/:username/texts', function(req, res) {
+    // necessary for entity = org to store text logs
+    // if text validated,
+    //  call sendSMS here
+    var myphone = '';
+    model.getOrgInfo(req.params.username, ['phone'], number => {
+      myphone = number.phone;
+    });
+    model.addTextByOrg(req.params.username, req.body.message, data => {
+      console.log(data);
+      model.getFollowers(req.params.username, contacts => {
+        contacts.forEach(function(contact) {
+          //sendSMS(req.body, myphone, contact.phone);
+        });
+        console.log(contacts);
 
-  // app.put('/api/org/:username/texts/:id', function(req, res) {
-  //   // org wants to edit message for logs
-
-  // });
+      });
+      res.status(200).json(data);
+    });
+  });
 
   // app.delete('/api/org/:username/texts/:id', function(req, res) {
   //   // org wants to delete mistake message
@@ -31,15 +42,23 @@ module.exports = function(app) {
   // });
 
 
-  // app.post('/api/user/:username/following', function(req, res) {
-  //   // add organization to follow
-  //   // get org id
-  // });
+  app.post('/api/user/:username/following', function(req, res) {
+    // add organization to follow
+    // get org id
+    model.subscribe(req.body.name,req.params.username, data => {
+      console.log(data);
+      res.status(200).json(data);
+    });
+  });
 
-  // app.delete('/api/user/:username/following/:org', function(req, res) {
-  //   // unsubscribe
-  //   // very important
-  // });
+  app.delete('/api/user/:username/following/:org', function(req, res) {
+    // unsubscribe
+    // very important
+    model.unsubscribe(req.params.org, req.params.username, data => {
+      console.log(data);
+      res.status(200).json(data);
+    });
+  });
 
 
   // app.post('/api/:entity/:username/info', function(req, res) {
@@ -53,7 +72,7 @@ module.exports = function(app) {
   // app.delete('/api/:entity/:username/info', function(req, res) {
   //   // delete profile content
   // });
-
+/*
   // Start MAH additions
   // can remove or merge those not needed or redundant
 
@@ -231,5 +250,6 @@ module.exports = function(app) {
     });
     
   // end MAH additions
+  */
 
 }

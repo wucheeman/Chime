@@ -1,0 +1,9 @@
+.subscribe[data-sub="true"] {
+  background-color: blue;
+  color: white;
+}
+
+.subscribe[data-sub="false"] {
+  background-color: red;
+  color: white;
+}
