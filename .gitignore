@@ -10,7 +10,7 @@ mah_server.js
 config/config.json
 bak/
 ngrok
-
+.DS_Store
 # Executables
 
 

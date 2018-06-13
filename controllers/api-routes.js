@@ -23,7 +23,7 @@ module.exports = function(app) {
     });
     model.addTextByOrg(req.params.username, req.body.message, data => {
       console.log(data);
-      model.getSubscribers(req.params.username, contacts => {
+      model.getFollowers(req.params.username, contacts => {
         contacts.forEach(function(contact) {
           //sendSMS(req.body, myphone, contact.phone);
         });

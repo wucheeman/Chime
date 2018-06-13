@@ -39,28 +39,47 @@ module.exports = function(app) {
 
   app.get('/user/:username', function(req, res) {
     model.getSubscriptionMessages(req.params.username, data => {
-      var hbsObject = {user: req.params.username, messages: []};
+      var hbsObject = {user: req.params.username, messages: [], subs: []};
       data.forEach(point => {
         hbsObject.messages.push({
         sub: point.organization,
         message: point.message || ''
         });
       });
-      res.render('user-home', hbsObject);
-      console.log(data);
-      console.log(hbsObject);
+      
+      model.getSubscriptions(req.params.username, subs => {
+        subs.forEach(org => {
+          hbsObject.subs.push({
+            sub: org.organization
+          });
+        });
+        res.render('user-home', hbsObject);
+        console.log(data);
+        console.log(hbsObject);
+      });
     });
   });
 
   app.get('/user/:username/browse', function(req, res) {
     // db call to display available companies to follow
-    model.displayOrganizations(data => {
-      var hbsObject = {orgs: []};
-      data.forEach(point => {
-        hbsObject.orgs.push({username: point.username});
+    model.displayOrganizations(req.params.username, orgData => {
+      model.getSubscriptions(req.params.username, subData => {
+        var hbsObject = {orgs: []};
+        var subscribed = [];
+        subData.forEach(sub => {
+          subscribed.push(sub.organization);
+        });
+        orgData.forEach(point => { 
+          if (!subscribed.includes(point.username)) {
+            hbsObject.orgs.push({username: point.username, subbed: false, text: "Subscribe"});
+          }
+          else {
+            hbsObject.orgs.push({username: point.username, subbed: true, text: "Subscribed"});
+          }
+        });
+        res.render('user-browse', hbsObject);
       });
-      res.render('user-browse', hbsObject);
-    })
+    });
   });
 
   app.get('/org/:username', function(req, res) {

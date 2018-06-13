@@ -14,11 +14,6 @@ var orm = {
     qv += ` WHERE ${col} = "${val}";`
     query(qv, cb);
   },
-  findAll: function(table, col, val, cb) {
-    qv = `SELECT * FROM ${table}`;
-    qv += ` WHERE ${val} = "${col}";`;
-    query(qv, cb);
-  },
   insertRow: function(table, colArr, valArr, cb) {
     qv = `INSERT INTO ${table} (`;
     qv += arrIntoQuery(colArr);
@@ -43,14 +38,6 @@ var orm = {
     qv += ` LEFT JOIN ${table2} ON ${condition}`;
     qv += ` WHERE ${where};`;
     query(qv, cb);  
-  },
-  leftJoinChained: function(colArr, table1, table2, condition1, condition2, cb) {
-    var qv = `SELECT `;
-    qv += arrIntoQuery(colArr);
-    qv += ` FROM ${table1}`;
-    qv += ` LEFT JOIN ${table2} ON ${condition1}`;
-    //qv += ` WHERE = (SELECT * WHERE ${condition2});`;
-    query(qv, cb);
   }
 }
 

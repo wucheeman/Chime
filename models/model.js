@@ -11,13 +11,18 @@ var model = {
       cb(res);
     }); 
   },
-  getSubscribers: function(organization, cb) {
+  getSubscriptions: function(follower, cb) {
+    orm.findWhere('organizations_followed', ['organization'], 'follower', follower, function(res) {
+      cb(res);
+    });
+  },
+  getFollowers: function(organization, cb) {
     orm.leftJoinSelect(['follower', 'phone'], 'organizations_followed', 'followers', `organizations_followed.follower = followers.username`,`organization = "${organization}"`, function(res) {
       cb(res);
     });
   },
   getSubscriptionMessages: function(follower, cb) {
-    orm.leftJoinSelect(['follower', 'organizations_followed.organization', 'message'], 'organizations_followed', 'organization_texts',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, function(res) {
+    orm.leftJoinSelect(['follower', 'organizations_followed.organization', 'message'], 'organization_texts', 'organizations_followed',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, function(res) {
       cb(res);
     });
   },
@@ -31,7 +36,7 @@ var model = {
       cb(res);
     });
   },
-  displayOrganizations: function(cb) {
+  displayOrganizations: function(follower, cb) {
     orm.selectAll('organizations', ['username'], function(res) {
       cb(res);
     });

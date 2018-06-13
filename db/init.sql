@@ -18,5 +18,9 @@ INSERT INTO organizations_followed
 ('rick', 'gym'),
 ('rick', 'lab');
 
-INSERT INTO organization_texts (organization, message)
-VALUES ('lab', 'pam is on the loose');
+INSERT INTO organization_texts (organization, message) VALUES 
+('lab', 'applicants wanted for testing portal gun'),
+('school', 'homecoming next week'),
+('gym', 'installed obstacle course to train for american nija warrior'),
+('church', 'yard sale tomorrow'),
+('lab', 'test subject has escaped, please return to aperture science');

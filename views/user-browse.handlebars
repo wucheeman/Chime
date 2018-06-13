@@ -1,3 +1,4 @@
+<div class="container">
 <a href="javascript:location.replace(location.href.slice(0, -('/browse').length))">Home</a>
 
 <h2>Search for organizations to follow</h2>
@@ -14,9 +15,9 @@
 {{#each orgs}}
 <div>
   <p>{{username}}</p>
-  <button class="subscribe" data-name="{{username}}">Subscribe</button>
+  <button class="subscribe" data-name="{{username}}" data-sub="{{subbed}}">{{text}}</button>
 </div>
 {{/each}}
-
+</div>
 <script src="/js/user-browse.js"></script>
 

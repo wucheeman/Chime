@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.unsub').click(function() {
+  $('.subscribe').click(function() {
     var org = $(this).attr('data-name');
     $.ajax({
       method: 'DELETE',
