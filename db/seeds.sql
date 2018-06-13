@@ -1,11 +1,11 @@
 USE chimedb;
 
-INSERT INTO `Organizations` (`name`,`followers`,`createdAt`,`updatedAt`) VALUES ('Bobs Bait and Web Services',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
-INSERT INTO `Organizations` (`name`,`followers`,`createdAt`,`updatedAt`) VALUES ('Simchas for All',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
-INSERT INTO `Organizations` (`name`,`followers`,`createdAt`,`updatedAt`) VALUES ('Intellitronics',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
-INSERT INTO `Organizations` (`name`,`followers`,`createdAt`,`updatedAt`) VALUES ('Amazin Web Store',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
-INSERT INTO `Organizations` (`name`,`followers`,`createdAt`,`updatedAt`) VALUES ('Debbies Data Services',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
-INSERT INTO `Organizations` (`name`,`followers`,`createdAt`,`updatedAt`) VALUES ('Trader Petes Code Emporium',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`phone_number`,`followers`,`createdAt`,`updatedAt`) VALUES ('Bobs Bait and Web Services','+19876543210',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`phone_number`,`followers`,`createdAt`,`updatedAt`) VALUES ('Simchas for All','+19876543211',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`phone_number`,`followers`,`createdAt`,`updatedAt`) VALUES ('Intellitronics','+19876543212',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`phone_number`,`followers`,`createdAt`,`updatedAt`) VALUES ('Amazin Web Store','+19876543213',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`phone_number`,`followers`,`createdAt`,`updatedAt`) VALUES ('Debbies Data Services','+19876543214',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
+INSERT INTO `Organizations` (`name`,`phone_number`,`followers`,`createdAt`,`updatedAt`) VALUES ('Trader Petes Code Emporium','+19876543215',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
 
 
 INSERT INTO `Followers` (`name`,`phone_number`,`followed_orgs`,`createdAt`,`updatedAt`) VALUES ('Amy Alligator','+11111111111',NULL,'2018-06-10 13:22:58','2018-06-10 13:22:58');
