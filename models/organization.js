@@ -7,6 +7,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [12]
+      }
+    },
     // TODO: fix when junction tables are better understood!
     followers: {
       type: DataTypes.STRING,
