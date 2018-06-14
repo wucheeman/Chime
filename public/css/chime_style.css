@@ -12,3 +12,12 @@
   visibility: hidden;
   color: red;
 }
+
+.entity {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.entity:hover {
+  background-color: lightblue;
+}
