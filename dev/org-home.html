@@ -1,12 +1,27 @@
 <h1>Chime Homepage</h1>
 <h2>Welcome {{org}}</h2>
 <p>Send an SMS</p>
-<div>
-  <form>
-    <label for="message">Compose Text Message</label>
-    <input type="text" id="message">
-    <button id="send">Send</button>
-  </form>
+<div class="Collapsible">
+  <span class="Collapsible__trigger is-closed">
+    <div>
+      <div>
+        <i class="fa fa-caret-right fa-2x pull-left" id="collapsible-caret" aria-hidden="true"></i>
+      </div>
+      <div>
+        <h4 id="compose-a-message-header">Compose a Message</h4>
+        <form>
+          <label for="message">Compose Text Message</label>
+          <input type="text" id="message">
+          <button id="send">Send</button>
+        </form>
+      </div>
+    </div>
+  </span>
+  <div class="Collapsible__contentOuter" style="height: 0px; transition: height 400ms linear; overflow: hidden;">
+    <div class="Collapsible__contentInner"></div>
+  </div>
+</div>>
+
 </div>
 <div>
   <p>Sent messages</p>
@@ -19,3 +34,4 @@
 </div>
 
 <script src="/js/org-home.js"></script>
+
