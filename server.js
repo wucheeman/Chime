@@ -26,15 +26,11 @@ app.use(logger);
 require("./controllers/routes.js")(app);
 /*
 //Sync Database
-models.sequelize.sync({force:true}).then(function() {
-  console.log('Nice! Database looks fine');
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+models.sequelize.sync().then(function() {
+  console.log('Nice! Database looks fine');  
 }).catch(function(err) {
   console.log(err, "Something went wrong with the Database Update!")
 });
-*/
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });

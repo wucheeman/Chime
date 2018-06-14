@@ -1,4 +1,3 @@
-
 var sendSMS = require('../twilio/send-sms.js');
 
 var model = require('../models/model.js');
