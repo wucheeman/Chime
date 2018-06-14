@@ -4,32 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/css/login_style.css" type="text/css">
-  <title>Login Page</title>
+  <link rel="stylesheet" href="css/login_style.css" type="text/css">
 </head>
 
 <body>
   <div class="container">
-
-    <div class="dropdown show">
-      <a class="btn btn-secondary dropdown-toggle" href="layouts/main.handlebars" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        User or Organization?
-      </a>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="views/user-home.handlebars">I am a user.</a>
-        <a class="dropdown-item" href="views/org-home.handlebars">I am an organization.</a>
-      </div>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Login Page</h1>
     </div>
+    <form class="form-group">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">User or Organization?
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li value="/api/user">I am a user.</li>
+          <li value="/api/organizations">I am an organization.</li>
+        </ul>
+      </div>
+    </form>
 
-
-    {{!-- <form>
-      <input type="radio" name="entity" value="user"> 
-      <br>
-      <input type="radio" name="entity" value="org"> 
-      <br>
-    </form> --}}
 
     <div class="panel-body">
       <form class="user-login">
