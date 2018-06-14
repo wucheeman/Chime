@@ -13,6 +13,8 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var initializeDB = require('./config/initializeDB.js');
+initializeDB();
 
 // Use logger for testing routes
 /*
