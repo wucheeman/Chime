@@ -1,6 +1,5 @@
-@media screen and (min-width: 768px)
-.container .jumbotron, 
-.panel-body {
+@media screen and (min-width: 768px) {
+.container .jumbotron, .panel-body {
     padding: 15px;
     display: table;
     padding-right: 75px;
@@ -72,4 +71,5 @@ body {
     font-size: 14px;
     display: inline-block;
     box-sizing: border-box;
+}
 }

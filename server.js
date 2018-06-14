@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
-//var models = require("./models");
+//  var models = require("./models");
 
 var app = express();
 app.use(express.static('public'));
@@ -26,14 +26,22 @@ app.use(logger);
 */
 
 require("./controllers/routes.js")(app);
-/*
+
 //Sync Database
+<<<<<<< HEAD
 models.sequelize.sync().then(function() {
   console.log('Nice! Database looks fine');  
 }).catch(function(err) {
   console.log(err, "Something went wrong with the Database Update!")
 });
 */
+=======
+// models.sequelize.sync().then(function() {
+//   console.log('Nice! Database looks fine');  
+// }).catch(function(err) {
+//   console.log(err, "Something went wrong with the Database Update!")
+// });
+>>>>>>> 6f4f149d9fef748c9790466e6f76b4a25f8b41a5
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
