@@ -54,8 +54,8 @@ module.exports = function(app) {
           });
         });
         res.render('user-home', hbsObject);
-        console.log(data);
-        console.log(hbsObject);
+        //console.log(data);
+        //console.log(hbsObject);
       });
     });
   });
