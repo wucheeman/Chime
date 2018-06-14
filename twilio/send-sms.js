@@ -1,7 +1,5 @@
 // // const client = require('./client.js');
 
-require('dotenv').config();
-
 module.exports = function(body, from, to) {
 
   // console.log('from' + from);
