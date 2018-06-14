@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
-var models = require("./models");
+//var models = require("./models");
 
 var app = express();
 app.use(express.static('public'));
@@ -24,7 +24,7 @@ app.use(logger);
 
 
 require("./controllers/routes.js")(app);
-
+/*
 //Sync Database
 models.sequelize.sync({force:true}).then(function() {
   console.log('Nice! Database looks fine');
@@ -34,5 +34,5 @@ models.sequelize.sync({force:true}).then(function() {
 }).catch(function(err) {
   console.log(err, "Something went wrong with the Database Update!")
 });
-
+*/
 
