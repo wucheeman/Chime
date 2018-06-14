@@ -7,3 +7,8 @@
   background-color: red;
   color: white;
 }
+
+#login-success {
+  visibility: hidden;
+  color: red;
+}

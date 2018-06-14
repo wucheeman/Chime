@@ -10,7 +10,7 @@
 
 <body>
   <div class="container">
-
+<!--
     <div class="dropdown show">
       <a class="btn btn-secondary dropdown-toggle" href="layouts/main.handlebars" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
@@ -22,23 +22,22 @@
         <a class="dropdown-item" href="views/org-home.handlebars">I am an organization.</a>
       </div>
     </div>
+-->
 
-
-    {{!-- <form>
-      <input type="radio" name="entity" value="user"> 
+    <form>
+      <input type="radio" name="entity" value="user"> I am a user
       <br>
-      <input type="radio" name="entity" value="org"> 
+      <input type="radio" name="entity" value="org"> I am an organization
       <br>
-    </form> --}}
+    </form> 
 
     <div class="panel-body">
       <form class="user-login">
         <label for="username">Enter a username</label>
         <input type="text" id="username">
-        <label for="password">Enter a password.</label>
-        <input type="password" id="password">
         <button class="btn btn-warning" id="login" type="submit">Login</button>
       </form>
+      <small id="login-success">Sorry we could not find that username</small>
     </div>
   </div>
 

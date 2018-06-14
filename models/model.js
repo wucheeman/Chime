@@ -50,6 +50,11 @@ var model = {
     orm.findWhere('organizations', colArr, 'username', username, function(res) {
       cb(res);
     });
+  },
+  getUsernamesFromTable: function(entity, cb) {
+    orm.selectAll(entity, ['username'], function(res) {
+      cb(res);
+    });
   }
 }
 
