@@ -33,6 +33,7 @@ models.sequelize.sync().then(function() {
 }).catch(function(err) {
   console.log(err, "Something went wrong with the Database Update!")
 });
+*/
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
