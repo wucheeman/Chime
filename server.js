@@ -26,7 +26,7 @@ app.use(logger);
 */
 
 require("./controllers/routes.js")(app);
-/*
+
 //Sync Database
 models.sequelize.sync().then(function() {
   console.log('Nice! Database looks fine');  
