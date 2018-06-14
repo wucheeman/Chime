@@ -46,8 +46,8 @@ var model = {
       cb(res);
     });
   },
-  getOrgInfo: function(username, colArr, cb) {
-    orm.findWhere('organizations', colArr, 'username', username, function(res) {
+  getOrgInfo: function(username, cb) {
+    orm.findWhere('organizations', ['phone', 'title'], 'username', username, function(res) {
       cb(res);
     });
   },

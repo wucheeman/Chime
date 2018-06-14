@@ -13,20 +13,16 @@ module.exports = function(app) {
 
 
   app.post('/api/org/:username/texts', function(req, res) {
-    var myphone = '';
-    model.getOrgInfo(req.params.username, ['phone'], number => {
-      myphone = number.phone;
-    });
-    model.addTextByOrg(req.params.username, req.body.message, data => {
-      console.log(data);
-      model.getFollowers(req.params.username, contacts => {
-        contacts.forEach(function(contact) {
-          //sendSMS(req.body, myphone, contact.phone);
+    model.getOrgInfo(req.params.username, number => {
+      model.addTextByOrg(req.params.username, req.body.message, data => {
+        model.getFollowers(req.params.username, contacts => {
+          contacts.forEach(function(contact) {
+            sendSMS(`From ${number[0].title}: ` + req.body.message, number[0].phone, contact.phone);
+          });
+          console.log(contacts);
         });
-        console.log(contacts);
-
+        res.status(200).json(data);
       });
-      res.status(200).json(data);
     });
   });
 
