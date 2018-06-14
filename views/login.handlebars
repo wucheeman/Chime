@@ -9,7 +9,7 @@
 
 <body>
   <div class="container">
-    <!-- Jumbotron -->
+<!-- Jumbotron -->
     <div class="jumbotron">
       <h1 class="text-center">Login Page</h1>
     </div>
@@ -19,21 +19,19 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li value="/api/user">I am a user.</li>
-          <li value="/api/organizations">I am an organization.</li>
+          <li data-value="user" class="entity">I am a user.</li>
+          <li data-value="org" class="entity">I am an organization.</li>
         </ul>
       </div>
     </form>
-
 
     <div class="panel-body">
       <form class="user-login">
         <label for="username">Enter a username</label>
         <input type="text" id="username">
-        <label for="password">Enter a password.</label>
-        <input type="password" id="password">
         <button class="btn btn-warning" id="login" type="submit">Login</button>
       </form>
+      <small id="login-success">Sorry we could not find that username</small>
     </div>
   </div>
 

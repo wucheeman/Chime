@@ -1,17 +1,7 @@
 
-
-// client.messages
-//   .create({
-//      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-//      from: '+15017122661',
-//      to: '+15558675310'
-//    })
-//   .then(message => console.log(message.sid))
-//   .done();
 var sendSMS = require('../twilio/send-sms.js');
-// needed to connect to database
+
 var model = require('../models/model.js');
-//var db = require("../models");
 
 module.exports = function(app) {
   app.post('/api/:entity/:username/login', function(req, res) {
@@ -24,9 +14,6 @@ module.exports = function(app) {
 
 
   app.post('/api/org/:username/texts', function(req, res) {
-    // necessary for entity = org to store text logs
-    // if text validated,
-    //  call sendSMS here
     var myphone = '';
     model.getOrgInfo(req.params.username, ['phone'], number => {
       myphone = number.phone;
@@ -53,8 +40,6 @@ module.exports = function(app) {
 
 
   app.post('/api/user/:username/following', function(req, res) {
-    // add organization to follow
-    // get org id
     model.subscribe(req.body.name,req.params.username, data => {
       console.log(data);
       res.status(200).json(data);
@@ -62,8 +47,6 @@ module.exports = function(app) {
   });
 
   app.delete('/api/user/:username/following/:org', function(req, res) {
-    // unsubscribe
-    // very important
     model.unsubscribe(req.params.org, req.params.username, data => {
       console.log(data);
       res.status(200).json(data);

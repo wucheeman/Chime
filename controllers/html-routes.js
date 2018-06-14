@@ -1,25 +1,4 @@
 var model = require('../models/model.js');
-// Temporary data
-const orgs = [{name: 'Festival'}, {name: 'Library'}, {name: 'Park'}, {name: 'Baseball Field'}];
-const subs = [{name: 'Festival'}, {name: 'Baseball'}];
-const logs = [
-  {
-    org: 'Festival',
-    message: 'World food fair',
-    date: '6/16/18'
-  },
-  {
-    org: 'Baseball',
-    message: 'Game tonight',
-    date: '6/10/18'
-  }
-];
-const companyLog = [
-  {
-    message: 'Thank you for following us',
-    date: '6/10/18'
-  }
-];
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
@@ -33,8 +12,29 @@ module.exports = function(app) {
   app.post('/login', function(req, res) {
     // validate
     var entity = req.body.entity;
+    var sqlEntity = '';
+    if (entity === 'user') {
+      sqlEntity += 'followers';
+    }
+    else if (entity === 'org') {
+      sqlEntity += 'organizations';
+    }
     var username = req.body.username;
-    res.status(200).send(`${entity}/${username}`);
+    var isUser = false;
+    model.getUsernamesFromTable(sqlEntity, data => {
+      data.forEach(point => {
+        if (username === point.username) {
+          isUser = true;
+        }
+      });
+      //console.log(data);
+      if (isUser) {
+        res.status(200).send(`${entity}/${username}`);
+      }
+      else {
+        res.status(404).send(false);
+      }
+    });
   });
 
   app.get('/user/:username', function(req, res) {
@@ -54,8 +54,8 @@ module.exports = function(app) {
           });
         });
         res.render('user-home', hbsObject);
-        console.log(data);
-        console.log(hbsObject);
+        //console.log(data);
+        //console.log(hbsObject);
       });
     });
   });
