@@ -1,0 +1,49 @@
+@media screen and (min-width: 768px) {
+    .container .jumbotron .row {
+        padding: 15px;
+        display: table;
+        padding-right: 75px;
+        padding-left: 75px;
+        width: 100%;
+    }
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    #browse {
+        font-size: 30px;
+        text-align: center;
+        position: relative;
+    }
+    div {
+        display: inline-block;
+    }
+    
+    .container .jumbotron {
+        border-radius: 6px;
+        padding-top: 48px;
+        padding-bottom: 48px;
+        margin-bottom: 30px;
+        color: inherit;
+        background-color: #eee;
+        box-sizing: border-box;
+        width: 100%;
+    }  
+    #messages {
+        text-align: center;
+    }
+    #subscriptions {
+        text-align: center;
+    }
+
+    #subscribe {
+        align-content: center;
+    }
+
+    .col-centered {
+        float: none;
+        margin: 0 auto;
+    }
+}
