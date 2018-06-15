@@ -1,16 +1,17 @@
 <div class="container">
-<h1>Chime Homepage</h1>
-<h2>Welcome {{org}}</h2>
-<h3>Send an SMS</h3>
+  <div class="jumbotron">
+<h1 class="text-center">Chime Homepage</h1>
+<h2 class="text-center">Welcome {{org}}!</h2>
+<h3 class="text-center">Send an SMS</h3>
 <div>
-  <form>
+  <form class="text-center">
     <label for="message">Compose Text Message</label>
     <input type="text" id="message">
     <button id="send">Send</button>
   </form>
 </div>
 <div>
-<h3>Sent messages</h3>
+<h3 class="text-center">Sent messages</h3>
 {{#each messages}}
   <div class="sms-div">
     <p class="sms-date">{{datetime}}</p>
@@ -18,6 +19,7 @@
     <!--<small>{{date}}</small>-->
   </div>
   {{/each}}
+</div>
 </div>
 </div>
 

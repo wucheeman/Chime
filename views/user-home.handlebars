@@ -1,32 +1,29 @@
 <div class="container">
-<h1>Chime Homepage</h1>
-<h2>Welcome {{user}}</h2>
-<a href="javascript:location.replace(location.href + '/browse')">Browse</a>
+  <div class="jumbotron">
+    <h1 class="text-center">Chime Homepage</h1>
+    <h2 class="text-center">Welcome {{user}}!</h2>
+    <a href="javascript:location.replace(location.href + '/browse')">Browse</a>
 
-<div>
-<h3>My messages</h3>
-  {{#each messages}}
-  <div class="sms-div">
-    <p class="sms-date">{{datetime}}</p>
-    <p class="sms-sub">{{sub}}</p>
-    <p class="sms-text">{{message}}</p>
-    <!--<small>{{date}}</small>-->
+    <div>
+      <h3>My messages</h3>
+      {{#each messages}}
+      <div class="sms-div">
+        <p class="sms-date">{{datetime}}</p>
+        <p class="sms-sub">{{sub}}</p>
+        <p class="sms-text">{{message}}</p>
+        <!--<small>{{date}}</small>-->
+      </div>
+      {{/each}}
+    </div>
+
+    <div>
+      <h3>Subscriptions</h3>
+      {{#each subs}}
+      <div>
+        <p>{{sub}}</p>
+        <button class="subscribe" data-name="{{sub}}" data-sub="true">Subscribed</button>
+      </div>
+      {{/each}}
+    </div>
   </div>
-  {{/each}}
 </div>
-
-<div>
-<h3>Subscriptions</h3>
-{{#each subs}}
-  <div>
-    <p>{{sub}}</p>
-    <button class="subscribe" data-name="{{sub}}" data-sub="true">Subscribed</button>
-  </div>
-  {{/each}}
-</div>
-
-</div>
-
-
-
-
