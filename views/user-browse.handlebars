@@ -1,5 +1,6 @@
 <div class="container">
-<a href="javascript:location.replace(location.href.slice(0, -('/browse').length))">Home</a>
+<div class="jumbotron">    
+<a class="text-center" href="javascript:location.replace(location.href.slice(0, -('/browse').length))">Home</a>
 <!--
 <h2>Search for organizations to follow</h2>
 
@@ -7,18 +8,19 @@
     <input type="text" placeholder="Search">
     <button type="button"><i class="fa fa-search"></i></button>
 </div>
-{{!-- <form id="organization-search">
+{{! <form id="organization-search">
     <input type="text" placeholder="Search..">
-</form> --}}
+</form>}}
 =======
 -->
-<h2>Follow an Organization</h2>
+<h2 class="text-center">Follow an Organization</h2>
 {{#each orgs}}
-<div>
+<div class="org-subscribe">
   <p>{{title}}</p>
   <button class="subscribe" data-name="{{title}}" data-sub="{{subbed}}">{{text}}</button>
 </div>
 {{/each}}
+</div>
 </div>
 
 
