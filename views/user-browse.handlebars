@@ -1,6 +1,6 @@
 <div class="container">
 <a href="javascript:location.replace(location.href.slice(0, -('/browse').length))">Home</a>
-
+<!--
 <h2>Search for organizations to follow</h2>
 
 <div class="search-container">
@@ -11,13 +11,14 @@
     <input type="text" placeholder="Search..">
 </form> --}}
 =======
+-->
 <h2>Follow an Organization</h2>
 {{#each orgs}}
 <div>
-  <p>{{username}}</p>
-  <button class="subscribe" data-name="{{username}}" data-sub="{{subbed}}">{{text}}</button>
+  <p>{{title}}</p>
+  <button class="subscribe" data-name="{{title}}" data-sub="{{subbed}}">{{text}}</button>
 </div>
 {{/each}}
 </div>
-<script src="/js/user-browse.js"></script>
+
 

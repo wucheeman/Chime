@@ -4,15 +4,16 @@ $(document).ready(function() {
     if ($(this).attr('data-sub') === "false") {
       $.ajax({
         method: 'POST',
-        url: `/api${location.pathname.slice(0, -('/browse').length)}/following/`,
+        url: `/api${location.pathname.slice(0, -('/browse').length)}/following`,
         data: {name: org}
       }).then(function() {
         location.reload();
       });
     } else if ($(this).attr('data-sub') === "true") {
       $.ajax({
-        method: 'DELETE',
-        url: `/api${location.pathname.slice(0, -('/browse').length)}/following/${org}`,
+        method: 'POST',
+        url: `/api${location.pathname.slice(0, -('/browse').length)}/following/delete`,
+        data: {name: org}
       }).then(function() {
         location.reload();
       });
