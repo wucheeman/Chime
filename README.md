@@ -1,4 +1,11 @@
-<img src="public/images/bell.svg" alt="bell icon" width="100px" align="left"/>
+
+
+
+<div align="center">
+    <img src="public/images/bell.svg" alt="bell icon" width="100px" align="center"/>
+</div>
+
+---
 # Chime!
 
 ## What the project does
