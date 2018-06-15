@@ -14,6 +14,14 @@ var orm = {
     qv += ` WHERE ${col} = "${val}";`
     query(qv, cb);
   },
+  findWhereOrderBy: function(table, colArr, col, val, order, cb) {
+    qv = `SELECT `;
+    qv += arrIntoQuery(colArr);
+    qv += ` FROM ${table}`;
+    qv += ` WHERE ${col} = "${val}"`;
+    qv += ` ORDER BY ${order} DESC;`;
+    query(qv, cb);
+  },
   insertRow: function(table, colArr, valArr, cb) {
     qv = `INSERT INTO ${table} (`;
     qv += arrIntoQuery(colArr);
@@ -38,7 +46,16 @@ var orm = {
     qv += ` LEFT JOIN ${table2} ON ${condition}`;
     qv += ` WHERE ${where};`;
     query(qv, cb);  
-  }
+  },
+  leftJoinSelectOrderBy: function(colArr, table1, table2, condition, where, order, cb) {
+    var qv = `SELECT `;
+    qv += arrIntoQuery(colArr);
+    qv += ` FROM ${table1}`;
+    qv += ` LEFT JOIN ${table2} ON ${condition}`;
+    qv += ` WHERE ${where}`;
+    qv += ` ORDER BY ${order} DESC;`
+    query(qv, cb);  
+  } 
 
 }
 
