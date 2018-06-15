@@ -17,6 +17,8 @@
     "express-session": "^1.15.6",
     "form-data": "^2.3.2",
     "module_name": "^1.0.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.17",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.10",

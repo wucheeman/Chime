@@ -1,13 +1,13 @@
 var orm = require('../config/orm.js');
 
 var model = {
-  addTextByOrg: function(organization, message, cb) {
-    orm.insertRow('organization_texts', ['organization', 'message'], [`"${organization}"`, `"${message}"`], function(res) {
+  addTextByOrg: function(organization, message, createdAt, cb) {
+    orm.insertRow('organization_texts', ['organization', 'message', 'createdAt'], [`"${organization}"`, `"${message}"`, `"${createdAt}"`], function(res) {
       cb(res);
     });
   },
   getAllTextsByOrg: function(organization, cb) {
-    orm.findWhere('organization_texts', ['message'], 'organization', organization, function(res) {
+    orm.findWhereOrderBy('organization_texts', ['message', 'createdAt'], 'organization', organization, 'createdAt', function(res) {
       cb(res);
     }); 
   },
@@ -22,7 +22,7 @@ var model = {
     });
   },
   getSubscriptionMessages: function(follower, cb) {
-    orm.leftJoinSelect(['follower', 'organizations_followed.organization', 'message'], 'organization_texts', 'organizations_followed',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, function(res) {
+    orm.leftJoinSelectOrderBy(['follower', 'organizations_followed.organization', 'message', 'createdAt'], 'organization_texts', 'organizations_followed',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, 'createdAt', function(res) {
       cb(res);
     });
   },

@@ -1,5 +1,5 @@
 var sendSMS = require('../twilio/send-sms.js');
-
+var moment = require('moment');
 var model = require('../models/model.js');
 
 module.exports = function(app) {
@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   app.post('/api/org/:username/texts', function(req, res) {
     model.getOrgInfo(req.params.username, number => {
-      model.addTextByOrg(req.params.username, req.body.message, data => {
+      model.addTextByOrg(req.params.username, req.body.message, moment().format("YYYY-MM-DD HH:mm:ss"), data => {
         model.getFollowers(req.params.username, contacts => {
           contacts.forEach(function(contact) {
             sendSMS(`From ${number[0].title}: ` + req.body.message, number[0].phone, contact.phone);
