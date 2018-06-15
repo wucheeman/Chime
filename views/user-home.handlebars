@@ -4,7 +4,19 @@
 <a href="javascript:location.replace(location.href + '/browse')">Browse</a>
 
 <div>
-<p>Subscriptions</p>
+<h3>My messages</h3>
+  {{#each messages}}
+  <div class="sms-div">
+    <p class="sms-date">{{datetime}}</p>
+    <p class="sms-sub">{{sub}}</p>
+    <p class="sms-text">{{message}}</p>
+    <!--<small>{{date}}</small>-->
+  </div>
+  {{/each}}
+</div>
+
+<div>
+<h3>Subscriptions</h3>
 {{#each subs}}
   <div>
     <p>{{sub}}</p>
@@ -13,20 +25,8 @@
   {{/each}}
 </div>
 
-<div>
-<p>My messages</p>
-  {{#each messages}}
-  <div>
-    <strong>{{sub}}</strong>
-    <br>
-    <p>{{message}}</p>
-    <!--<small>{{date}}</small>-->
-  </div>
-  {{/each}}
 </div>
 
-</div>
 
-<script src="/js/user-home.js"></script>
 
 

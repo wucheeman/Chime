@@ -1,5 +1,5 @@
 var sendSMS = require('../twilio/send-sms.js');
-
+var moment = require('moment');
 var model = require('../models/model.js');
 
 module.exports = function(app) {
@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   app.post('/api/org/:username/texts', function(req, res) {
     model.getOrgInfo(req.params.username, number => {
-      model.addTextByOrg(req.params.username, req.body.message, data => {
+      model.addTextByOrg(req.params.username, req.body.message, moment().format("YYYY-MM-DD HH:mm:ss"), data => {
         model.getFollowers(req.params.username, contacts => {
           contacts.forEach(function(contact) {
             sendSMS(`From ${number[0].title}: ` + req.body.message, number[0].phone, contact.phone);
@@ -35,16 +35,20 @@ module.exports = function(app) {
 
 
   app.post('/api/user/:username/following', function(req, res) {
-    model.subscribe(req.body.name,req.params.username, data => {
-      console.log(data);
-      res.status(200).json(data);
+    model.orgTitletoUsername(req.body.name, orgUsername => {
+      model.subscribe(orgUsername[0].username,req.params.username, data => {
+        console.log(data);
+        res.status(200).json(data);
+      });
     });
   });
 
-  app.delete('/api/user/:username/following/:org', function(req, res) {
-    model.unsubscribe(req.params.org, req.params.username, data => {
-      console.log(data);
-      res.status(200).json(data);
+  app.post('/api/user/:username/following/delete', function(req, res) {
+    model.orgTitletoUsername(req.body.name, orgUsername => {
+      model.unsubscribe(orgUsername[0].username, req.params.username, data => {
+        console.log(data);
+        res.status(200).json(data);
+      });
     });
   });
 

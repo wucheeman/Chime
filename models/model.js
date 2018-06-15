@@ -1,18 +1,18 @@
 var orm = require('../config/orm.js');
 
 var model = {
-  addTextByOrg: function(organization, message, cb) {
-    orm.insertRow('organization_texts', ['organization', 'message'], [`"${organization}"`, `"${message}"`], function(res) {
+  addTextByOrg: function(organization, message, createdAt, cb) {
+    orm.insertRow('organization_texts', ['organization', 'message', 'createdAt'], [`"${organization}"`, `"${message}"`, `"${createdAt}"`], function(res) {
       cb(res);
     });
   },
   getAllTextsByOrg: function(organization, cb) {
-    orm.findWhere('organization_texts', ['message'], 'organization', organization, function(res) {
+    orm.findWhereOrderBy('organization_texts', ['message', 'createdAt'], 'organization', organization, 'createdAt', function(res) {
       cb(res);
     }); 
   },
   getSubscriptions: function(follower, cb) {
-    orm.findWhere('organizations_followed', ['organization'], 'follower', follower, function(res) {
+    orm.leftJoinSelect(['title'], 'organizations', 'organizations_followed', `organizations_followed.organization = organizations.username`, `follower = "${follower}"`, function(res) {
       cb(res);
     });
   },
@@ -22,7 +22,7 @@ var model = {
     });
   },
   getSubscriptionMessages: function(follower, cb) {
-    orm.leftJoinSelect(['follower', 'organizations_followed.organization', 'message'], 'organization_texts', 'organizations_followed',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, function(res) {
+    orm.leftJoinSelectOrderBy(['follower', 'organizations_followed.organization', 'message', 'createdAt'], 'organization_texts', 'organizations_followed',  'organization_texts.organization = organizations_followed.organization', `follower = "${follower}"`, 'createdAt', function(res) {
       cb(res);
     });
   },
@@ -36,13 +36,13 @@ var model = {
       cb(res);
     });
   },
-  displayOrganizations: function(follower, cb) {
-    orm.selectAll('organizations', ['username'], function(res) {
+  displayOrganizations: function(cb) {
+    orm.selectAll('organizations', ['username', 'title'], function(res) {
       cb(res);
     });
   },
-  getUserInfo: function(username, colArr, cb) {
-    orm.findWhere('followers', colArr, 'username', username, function(res) {
+  getUserInfo: function(username, cb) {
+    orm.findWhere('followers', ['phone', 'title'], 'username', username, function(res) {
       cb(res);
     });
   },
@@ -53,6 +53,11 @@ var model = {
   },
   getUsernamesFromTable: function(entity, cb) {
     orm.selectAll(entity, ['username'], function(res) {
+      cb(res);
+    });
+  },
+  orgTitletoUsername: function(title, cb) {
+    orm.findWhere('organizations', ['username'], 'title', title, function(res) {
       cb(res);
     });
   }
