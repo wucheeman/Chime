@@ -4,7 +4,12 @@
         display: table;
         padding-right: 75px;
         padding-left: 75px;
+        width: 100%;
     }
+.home {
+    font-size: 30px;
+}    
 .subscribe {
     align-content: center;
+}
 }
