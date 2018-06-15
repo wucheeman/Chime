@@ -1,4 +1,5 @@
 var model = require('../models/model.js');
+var moment = require('moment-timezone');
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
@@ -45,7 +46,8 @@ module.exports = function(app) {
           model.getOrgInfo(point.organization, orgTitle => {
             hbsObject.messages.push({
             sub: orgTitle[0].title,
-            message: point.message || ''
+            message: point.message || '',
+            datetime: moment.tz(point.createdAt, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")
             });
           });
         });
@@ -92,7 +94,7 @@ module.exports = function(app) {
       var hbsObject = {org: name[0].title, messages: []}
       model.getAllTextsByOrg(req.params.username, data => {
         data.forEach(point => {
-          hbsObject.messages.push({message: point.message});
+          hbsObject.messages.push({message: point.message, datetime: moment.tz(point.createdAt, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")});
         });
         res.render('org-home', hbsObject);
       });
