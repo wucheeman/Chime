@@ -39,6 +39,7 @@ var orm = {
     qv += ` WHERE ${where};`;
     query(qv, cb);  
   }
+
 }
 
 function query(queryVal, cb) {
