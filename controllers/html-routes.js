@@ -50,7 +50,7 @@ module.exports = function(app) {
             hbsObject.messages.push({
             sub: orgTitle[0].title,
             message: point.message || '',
-            datetime: moment.tz(point.createdAt, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")
+            datetime: moment.tz(point.dated, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")
             });
           });
         });
@@ -103,7 +103,7 @@ module.exports = function(app) {
           hbsObject.mess_error = 'You have not sent any messages yet.';
         }
         data.forEach(point => {
-          hbsObject.messages.push({message: point.message, datetime: moment.tz(point.createdAt, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")});
+          hbsObject.messages.push({message: point.message, datetime: moment.tz(point.dated, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")});
         });
         res.render('org-home', hbsObject);
       });
