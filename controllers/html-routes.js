@@ -40,8 +40,11 @@ module.exports = function(app) {
 
   app.get('/user/:username', function(req, res) {
     model.getUserInfo(req.params.username, userTitle => {
-      var hbsObject = {user: userTitle[0].title, messages: [], subs: []};
+      var hbsObject = {user: userTitle[0].title, messages: [], subs: [], mess_error: '', sub_error: ''};
       model.getSubscriptionMessages(req.params.username, data => {
+        if (data.length === 0) {
+          hbsObject.mess_error = 'No messages.';
+        }
         data.forEach(point => {
           model.getOrgInfo(point.organization, orgTitle => {
             hbsObject.messages.push({
@@ -53,6 +56,9 @@ module.exports = function(app) {
         });
         
         model.getSubscriptions(req.params.username, subs => {
+          if (subs.length === 0) {
+            hbsObject.sub_error = 'No subscriptions.';
+          }
           subs.forEach(org => {
             hbsObject.subs.push({
               sub: org.title
@@ -77,10 +83,10 @@ module.exports = function(app) {
         });
         orgData.forEach(point => { 
           if (!subscribed.includes(point.title)) {
-            hbsObject.orgs.push({title: point.title, username: point.username, subbed: false, text: "Subscribe"});
+            hbsObject.orgs.push({title: point.title, username: point.username, subbed: false, text: "Subscribe", btn: "btn btn-danger"});
           }
           else {
-            hbsObject.orgs.push({title: point.title, username: point.username, subbed: true, text: "Subscribed"});
+            hbsObject.orgs.push({title: point.title, username: point.username, subbed: true, text: "Subscribed", btn: "btn btn-primary"});
           }
         });
         res.render('user-browse', hbsObject);
@@ -91,8 +97,11 @@ module.exports = function(app) {
   app.get('/org/:username', function(req, res) {
     // db call to collect text logs
     model.getOrgInfo(req.params.username, name => {
-      var hbsObject = {org: name[0].title, messages: []}
+      var hbsObject = {org: name[0].title, messages: [], mess_error: ''}
       model.getAllTextsByOrg(req.params.username, data => {
+        if (data.length === 0) {
+          hbsObject.mess_error = 'You have not sent any messages yet.';
+        }
         data.forEach(point => {
           hbsObject.messages.push({message: point.message, datetime: moment.tz(point.createdAt, 'America/New_York').format("HH:mm:ss MM-DD-YYYY")});
         });
