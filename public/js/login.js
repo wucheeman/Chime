@@ -3,12 +3,9 @@ $(document).ready(function() {
   $('.entity').click(function(event) {
     event.preventDefault();
     path = $(this).attr("data-value");
+    $('.entity').attr('class', 'btn btn-secondary btn-lg btn-block entity');
+    $(this).attr('class', 'btn btn-primary btn-lg btn-block entity');
   });
-
-$(".dropdown-menu li").click(function(){
-  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-});
 
   $('#login').click(function(event) {
     event.preventDefault();

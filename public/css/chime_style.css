@@ -1,3 +1,36 @@
+body {
+  background-image: url("../images/bamboo.jpg");
+}
+* {
+  padding: 2px;
+}
+.container {
+  background-color: white;
+}
+.super {
+  margin-top: 25px;
+  padding-bottom: 100px;
+}
+.jumbotron {
+  background-color: white;
+}
+.row {
+  margin-left: 5%;
+}
+.my-content {
+  padding: 10px 10px inherit 15px;
+}
+
+.added-div {
+  margin: 5px;
+}
+.sms-date, .my-sub, .org-title {
+  font-size: 1.25em;
+}
+.sms-sub {
+  font-weight: bold;
+}
+/*
 .subscribe[data-sub="true"] {
   background-color: blue;
   color: white;
@@ -7,7 +40,7 @@
   background-color: red;
   color: white;
 }
-
+*/
 #login-success {
   visibility: hidden;
   color: red;
@@ -16,6 +49,7 @@
 .entity {
   padding: 5px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .entity:hover {
