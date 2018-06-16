@@ -1,6 +1,7 @@
 var connection = require('./connection.js');
 
 var initializeDB = function() {
+  /*
 var initDB = [
   'DROP DATABASE IF EXISTS chimeDB',
   'CREATE DATABASE chimeDB',
@@ -17,6 +18,7 @@ initDB.forEach(function(queryVal) {
     console.log(res);
   });
 });
+*/
 
 var seedDB = [
   `INSERT INTO followers (username, title, phone) VALUES ("matt", "Matthew Buchanan", "${process.env.PHONE_1}")`,
