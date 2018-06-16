@@ -1,11 +1,17 @@
 var connection = require('./connection.js');
 
 var initializeDB = function() {
-  /*
+var db;
+if (process.env.JAWSDB_URL) {
+  db = 'k1o9msyplv8ehr3z';
+}
+else {
+  db = 'chimeDB';
+}
 var initDB = [
-  'DROP DATABASE IF EXISTS chimeDB',
-  'CREATE DATABASE chimeDB',
-  'USE chimeDB',
+  `DROP DATABASE IF EXISTS ${db}`,
+  `CREATE DATABASE ${db}`,
+  `USE ${db}`,
   'CREATE TABLE organizations (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(70) NOT NULL, title VARCHAR(140), phone VARCHAR(20), PRIMARY KEY (id))',
   'CREATE TABLE followers (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(70)  NOT NULL, title VARCHAR(140), phone VARCHAR(20), PRIMARY KEY (id))',
   'CREATE TABLE organizations_followed (id INT NOT NULL AUTO_INCREMENT, follower VARCHAR(70) NOT NULL, organization VARCHAR(70) NOT NULL, PRIMARY KEY (id))',
@@ -18,7 +24,7 @@ initDB.forEach(function(queryVal) {
     console.log(res);
   });
 });
-*/
+
 
 var seedDB = [
   `INSERT INTO followers (username, title, phone) VALUES ("matt", "Matthew Buchanan", "${process.env.PHONE_1}")`,
