@@ -3,7 +3,7 @@ var connection = require('./connection.js');
 var initializeDB = function() {
 var db;
 if (process.env.JAWSDB_URL) {
-  db = 'k1o9msyplv8ehr3z';
+  db = process.env.JAWSDB_DB;
 }
 else {
   db = 'chimeDB';
