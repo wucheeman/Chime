@@ -20,7 +20,7 @@ When you bring up the app, it will give you a login page. Click on the blue butt
 
 On the user homepage, click 'browse'. This will take you to the list of organizations that are using Chime. Click on the subscribe button below 'Trader Pete's Code Emporium', and note the button turns blue. Click on the 'Home' link to go back to matt's homepage.
 
-In a new tab, navigate to the login page. Click on the blue button and select 'organization'. Enter 'trader' and press 'login'. You will be taken to trader's homepage. Enter a text, and you will see it appear on trader's page. Go back to matt's tab, and you'll see that it's there as well. The text will also go out via an interface to Twilio, and it will appear on matt's phone as a new text.
+In a new tab, navigate to the login page. Click on the blue button and select 'organization'. Enter 'trader' and press 'login'. If you prefer, you can also log in as 'amazin' (for Amazin Web Store) or 'bait' (For Bob's Bait and Web Services') After log in, you will be taken to the organization's homepage. Enter a text, and you will see it appear on the page. Go back to matt's tab. If you sent a text as 'trader', you'll see that it's there as well. If you logged in as one of the others, it will not be because matt hasn't subscribed yet. A text from Trader Pete's will also go out via an interface to Twilio, and it will appear on matt's phone as a new text.
 
 Chime will send texts to multiple users, of course. To verify, log in on a third tab as the user 'steve'. Subscribe to Trader Pete's Code Emporium again. In the trader tab, send a second text. You'll see it appear in both matt and steve's tabs, and it will appear on both their phones as a new text.
 
